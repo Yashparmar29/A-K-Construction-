@@ -77,7 +77,11 @@ Bootstrap / Tailwind – Responsive design
 (Optional) PHP / Node.js – Backend
 (Optional) MySQL – Database
 
-
+🎨 Design Style
+Clean and professional layout
+Construction-themed colors (Yellow, Black, Grey)
+High-quality images of buildings and projects
+Smooth animations and hover effects
 
 🚀 Future Enhancements
 Online quotation system
