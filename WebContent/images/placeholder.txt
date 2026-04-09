@@ -1,0 +1,7 @@
+Placeholder for project images:
+- hero-bg.jpg (1920x1080)
+- project1.jpg to project6.jpg (600x400)
+- logo.png
+- icons/
+
+**Note:** Replace with actual construction images for production.
