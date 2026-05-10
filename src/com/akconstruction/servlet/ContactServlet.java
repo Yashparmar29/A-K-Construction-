@@ -22,7 +22,6 @@ public class ContactServlet extends HttpServlet {
         String email = request.getParameter("email");
         String message = request.getParameter("message");
         
-        // Server-side validation
         if (name == null || name.trim().isEmpty() || 
             email == null || !email.contains("@") || 
             message == null || message.trim().isEmpty()) {
