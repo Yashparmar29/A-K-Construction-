@@ -19,8 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/projects")
 public class ProjectServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
-    
-    // Simple POJO for project data
+
     public static class Project {
         private int id;
         private String title;
@@ -36,7 +35,6 @@ public class ProjectServlet extends HttpServlet {
             this.description = description;
         }
         
-        // Getters
         public int getId() { return id; }
         public String getTitle() { return title; }
         public String getCategory() { return category; }
@@ -79,7 +77,6 @@ public class ProjectServlet extends HttpServlet {
                 projects.add(project);
             }
             
-            // Send JSON response for AJAX
             response.setContentType("application/json");
             PrintWriter out = response.getWriter();
             
