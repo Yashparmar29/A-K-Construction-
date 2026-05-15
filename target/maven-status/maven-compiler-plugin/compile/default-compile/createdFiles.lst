@@ -1,0 +1,12 @@
+com\akconstruction\model\Project.class
+com\akconstruction\controller\ProjectController.class
+com\akconstruction\model\Contact.class
+com\akconstruction\controller\HomeController.class
+com\akconstruction\AKConstructionApp.class
+com\akconstruction\repository\UserRepository$1.class
+com\akconstruction\model\User.class
+com\akconstruction\controller\ContactController.class
+com\akconstruction\repository\ProjectRepository$1.class
+com\akconstruction\repository\ProjectRepository.class
+com\akconstruction\repository\ContactRepository.class
+com\akconstruction\repository\UserRepository.class
