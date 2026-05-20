@@ -9,7 +9,13 @@ public class Project {
 
     public Project() {}
 
-    
+    public Project(int id, String title, String category, String image, String description) {
+        this.id = id;
+        this.title = title;
+        this.category = category;
+        this.image = image;
+        this.description = description;
+    }
 
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
