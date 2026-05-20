@@ -40,7 +40,6 @@ INSERT IGNORE INTO projects (title, category, image, description) VALUES
 INSERT IGNORE INTO contacts (name, email, message) VALUES
 ('John Doe', 'john@example.com', 'Interested in residential project quote.');
 
--- Default admin account (password: admin123)
 INSERT INTO users (name, email, password, role) VALUES
 ('Administrator', 'admin@akconstruction.com', 'admin123', 'ADMIN')
 ON DUPLICATE KEY UPDATE role='ADMIN';
