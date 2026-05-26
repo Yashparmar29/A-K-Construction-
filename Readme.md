@@ -37,7 +37,7 @@ Follow these steps to set up the project locally.
 
 ### Prerequisites
 
--   **Java JDK 8** or higher
+-   
 -   **Maven 3.6+**
 -   **MySQL Server 8.0+**
 
