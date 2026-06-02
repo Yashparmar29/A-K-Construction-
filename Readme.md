@@ -5,7 +5,7 @@
 [![MySQL](https://img.shields.io/badge/MySQL-8.0-blue)](https://www.mysql.com/)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-A K Construction is a premium, high-performance web application designed for a modern construction company. Built with the Spring Boot framework, it offers a seamless user experience, responsive design, and robust backend management for services and projects.
+ Built with the Spring Boot framework, it offers a seamless user experience, responsive design, and robust backend management for services and projects.
 
 ![Banner](docs/images/banner.png)
 
