@@ -2,7 +2,14 @@
 CREATE DATABASE IF NOT EXISTS ak_construction;
 USE ak_construction;
 
-
+CREATE TABLE IF NOT EXISTS projects (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    title VARCHAR(255) NOT NULL,
+    category VARCHAR(100) NOT NULL,
+    image VARCHAR(255),
+    description TEXT,
+    created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
 
 CREATE TABLE IF NOT EXISTS contacts (
     id INT PRIMARY KEY AUTO_INCREMENT,
