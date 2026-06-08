@@ -25,8 +25,6 @@
             <button class="nav-toggle" id="navToggle"><i class="fas fa-bars"></i></button>
         </div>
     </nav>
-
-    <!-- Page Hero -->
     <section class="page-hero">
         <div class="page-hero-content">
             <div class="breadcrumb">
@@ -36,8 +34,6 @@
             <p>Building excellence since 2005 — your trusted construction partner</p>
         </div>
     </section>
-
-    <!-- Our Story -->
     <section class="section">
         <div class="container">
             <div class="story-grid fade-in">
@@ -76,7 +72,6 @@
         </div>
     </section>
 
-    <!-- Mission, Vision, Values -->
     <section class="section section-gray">
         <div class="container">
             <div class="section-header fade-in">
@@ -103,7 +98,6 @@
         </div>
     </section>
 
-    <!-- Team Section -->
     <section class="section">
         <div class="container">
             <div class="section-header fade-in">
@@ -140,7 +134,6 @@
         </div>
     </section>
 
-    <!-- Certifications -->
     <section class="section section-dark">
         <div class="container">
             <div class="section-header fade-in" style="color:white;">
