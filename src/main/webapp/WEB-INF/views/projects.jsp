@@ -64,7 +64,7 @@
         </div>
     </section>
 
-    <!-- CTA -->
+
     <section class="section cta-section">
         <div class="container">
             <div class="cta-box fade-in">
@@ -75,7 +75,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
@@ -119,7 +118,6 @@
             });
         });
 
-        // Load all on start
         loadProjects('');
 
         function loadProjects(category) {
