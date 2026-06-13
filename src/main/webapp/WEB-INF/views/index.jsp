@@ -22,6 +22,7 @@
                 <li><a href="/about">About</a></li>
                 <li><a href="/services">Services</a></li>
                 <li><a href="/projects">Projects</a></li>
+                <li><a href="/planner/dashboard">AI Planner</a></li>
                 <li><a href="/contact">Contact</a></li>
             </ul>
             <button class="nav-toggle" id="navToggle"><i class="fas fa-bars"></i></button>
@@ -99,6 +100,12 @@
                     <h3>Civil Engineering</h3>
                     <p>Bridges, roads, and infrastructure projects with precision engineering and safety.</p>
                     <a href="/services" class="card-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon"><i class="fas fa-magic" style="color:#F4C430;"></i></div>
+                    <h3>AI Smart Planner</h3>
+                    <p>Generate 3D luxury layouts, room coordinates, material requirements and cost budgets instantly.</p>
+                    <a href="/planner/dashboard" class="card-link" style="color:#F4C430; font-weight:700;">Launch Planner <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
         </div>
@@ -221,6 +228,7 @@
                         <li><a href="/about">About Us</a></li>
                         <li><a href="/services">Services</a></li>
                         <li><a href="/projects">Projects</a></li>
+                        <li><a href="/planner/dashboard">AI House Planner</a></li>
                         <li><a href="/contact">Contact</a></li>
                     </ul>
                 </div>
