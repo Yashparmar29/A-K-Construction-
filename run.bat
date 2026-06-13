@@ -12,6 +12,7 @@ echo.
 
 echo Importing MySQL database...
 "C:\Program Files\MySQL\MySQL Server 8.0\bin\mysql.exe" -u root -pyash < "d:\A-K-Construction-\database\ak_construction.sql" 2>nul
+"C:\Program Files\MySQL\MySQL Server 8.0\bin\mysql.exe" -u root -pyash < "d:\A-K-Construction-\database\planner_schema.sql" 2>nul
 echo Done.
 echo.
 echo Starting application on http://localhost:8080
