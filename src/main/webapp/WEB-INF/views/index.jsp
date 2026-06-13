@@ -11,7 +11,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <a href="/" class="logo">
@@ -29,7 +28,6 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-overlay"></div>
         <div class="hero-content">
@@ -68,7 +66,6 @@
         </div>
     </section>
 
-    <!-- Services Preview -->
     <section class="section">
         <div class="container">
             <div class="section-header fade-in">
@@ -110,8 +107,6 @@
             </div>
         </div>
     </section>
-
-    <!-- Featured Projects -->
     <section class="section section-dark">
         <div class="container">
             <div class="section-header fade-in">
@@ -132,8 +127,6 @@
             </div>
         </div>
     </section>
-
-    <!-- Why Choose Us -->
     <section class="section">
         <div class="container">
             <div class="why-us-grid fade-in">
@@ -189,7 +182,7 @@
         </div>
     </section>
 
-    <!-- CTA Section -->
+    
     <section class="section cta-section">
         <div class="container">
             <div class="cta-box fade-in">
