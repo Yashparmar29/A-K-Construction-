@@ -7,22 +7,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Plan Details - A K Construction</title>
-    <!-- Bootstrap 5 CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- Three.js Library -->
+   
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <!-- OrbitControls -->
+  
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
-    <!-- Chart.js -->
+    
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     
     <link rel="stylesheet" href="/css/planner.css">
 </head>
 <body class="planner-bg">
 
-    <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark planner-nav sticky-top">
         <div class="container py-2">
             <a class="navbar-brand d-flex align-items-center" href="/" style="font-weight: 800; color: var(--yellow);">
@@ -31,7 +29,7 @@
             <div class="ms-auto d-flex align-items-center gap-3">
                 <a href="/planner/dashboard" class="btn btn-gold-outline rounded-pill px-4 btn-sm"><i class="fas fa-th-large me-1"></i> Dashboard</a>
                 
-                <!-- Download PDF Button Form -->
+               
                 <form id="pdfForm" action="/planner/pdf" method="post" target="_blank" class="m-0">
                     <input type="hidden" name="id" value="${property.id}">
                     <input type="hidden" name="base64Image" id="base64Image">
@@ -43,10 +41,9 @@
         </div>
     </nav>
 
-    <!-- Detail View Main Content -->
+
     <div class="container py-5 fade-in">
-        
-        <!-- Header details -->
+      
         <div class="d-flex justify-content-between align-items-start mb-5 flex-wrap gap-3">
             <div>
                 <span class="badge bg-warning text-dark px-3 py-1.5 rounded-pill mb-2 font-weight-bold" style="font-size: 0.75rem;">${property.style} Plan</span>
@@ -54,7 +51,7 @@
                 <p class="text-white-50 mb-0"><i class="fas fa-map-marker-alt me-1 text-warning"></i> Located in ${property.city}, ${property.state}, ${property.country}</p>
             </div>
             <div id="architect-approval-container" class="text-end">
-                <!-- Set dynamically by script below based on plan approval status -->
+                
                 <span class="text-white-50 d-block mb-1" style="font-size: 0.8rem;">Submitted: <fmt:formatDate value="${property.createdAt}" pattern="dd MMM yyyy"/></span>
             </div>
         </div>
