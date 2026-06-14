@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Smart House Planner - New Request</title>
-    <!-- Bootstrap 5 CDN -->
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -21,7 +21,6 @@
 </head>
 <body class="planner-bg">
 
-    <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark planner-nav sticky-top">
         <div class="container py-2">
             <a class="navbar-brand d-flex align-items-center" href="/" style="font-weight: 800; color: var(--yellow);">
@@ -33,18 +32,18 @@
         </div>
     </nav>
 
-    <!-- Loading Overlay -->
+  
     <div id="loading-overlay" style="display: none;">
         <div class="spinner-gold mb-4"></div>
         <h3 class="text-white mb-2" style="font-weight: 700;">AI Engine Analyzing Plot Specifications</h3>
         <p class="text-white-50 text-center px-4" style="max-width: 450px;">Calculating buildable footprint coverage, distributing floor plans, compiling structural material lists, and compiling cost budgets...</p>
     </div>
 
-    <!-- Main Form Container -->
+
     <div class="container py-5">
         <div class="form-container">
             
-            <!-- Step Indicators -->
+          
             <div class="wizard-steps">
                 <div class="wizard-step active" id="step1-indicator">1</div>
                 <div class="wizard-step" id="step2-indicator">2</div>
