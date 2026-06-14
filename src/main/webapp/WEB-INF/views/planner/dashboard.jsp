@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - AI Smart House Planner</title>
-    <!-- Bootstrap 5 CDN -->
+   
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -15,7 +15,7 @@
 </head>
 <body class="planner-bg">
 
-    <!-- Navigation -->
+ 
     <nav class="navbar navbar-expand-lg navbar-dark planner-nav sticky-top">
         <div class="container py-2">
             <a class="navbar-brand d-flex align-items-center" href="/" style="font-weight: 800; color: var(--yellow);">
@@ -52,10 +52,10 @@
         </div>
     </nav>
 
-    <!-- Main Dashboard Container -->
+   
     <div class="container py-5 fade-in">
         
-        <!-- Welcome Block -->
+       
         <div class="d-flex justify-content-between align-items-center mb-5 flex-wrap gap-3">
             <div>
                 <h1 style="font-weight: 800; color: #fff;" class="mb-1">AI Smart House Planner</h1>
