@@ -36,7 +36,7 @@
         </div>
     </section>
 
-    <!-- Services Detail -->
+    
     <section class="section">
         <div class="container">
             <div class="section-header fade-in">
@@ -45,7 +45,6 @@
                 <p>We provide end-to-end construction services from design to handover, backed by 20+ years of expertise.</p>
             </div>
 
-            <!-- Service 1 -->
             <div class="service-detail-card fade-in">
                 <div class="service-detail-icon">
                     <i class="fas fa-home"></i>
@@ -64,7 +63,7 @@
                 </div>
             </div>
 
-            <!-- Service 2 -->
+        
             <div class="service-detail-card fade-in reverse">
                 <div class="service-detail-icon" style="background: linear-gradient(135deg, #667eea, #764ba2);">
                     <i class="fas fa-building"></i>
@@ -82,8 +81,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Service 3 -->
             <div class="service-detail-card fade-in">
                 <div class="service-detail-icon" style="background: linear-gradient(135deg, #f093fb, #f5576c);">
                     <i class="fas fa-tools"></i>
@@ -102,7 +99,7 @@
                 </div>
             </div>
 
-            <!-- Service 4 -->
+            
             <div class="service-detail-card fade-in reverse">
                 <div class="service-detail-icon" style="background: linear-gradient(135deg, #4facfe, #00f2fe);">
                     <i class="fas fa-drafting-compass"></i>
@@ -121,7 +118,7 @@
                 </div>
             </div>
 
-            <!-- Service 5 -->
+        
             <div class="service-detail-card fade-in">
                 <div class="service-detail-icon" style="background: linear-gradient(135deg, #43e97b, #38f9d7);">
                     <i class="fas fa-couch"></i>
@@ -140,7 +137,7 @@
                 </div>
             </div>
 
-            <!-- Service 6 -->
+        
             <div class="service-detail-card fade-in reverse">
                 <div class="service-detail-icon" style="background: linear-gradient(135deg, #fa709a, #fee140);">
                     <i class="fas fa-project-diagram"></i>
@@ -161,7 +158,7 @@
         </div>
     </section>
 
-    <!-- Process Section -->
+    
     <section class="section section-gray">
         <div class="container">
             <div class="section-header fade-in">
