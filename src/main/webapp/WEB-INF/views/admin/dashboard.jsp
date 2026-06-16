@@ -27,7 +27,7 @@
 </head>
 <body class="planner-bg">
 
-    <!-- Navigation -->
+    
     <nav class="navbar navbar-expand-lg navbar-dark planner-nav sticky-top">
         <div class="container py-2">
             <a class="navbar-brand d-flex align-items-center" href="/" style="font-weight: 800; color: var(--yellow);">
