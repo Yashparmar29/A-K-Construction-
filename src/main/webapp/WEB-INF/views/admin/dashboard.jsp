@@ -40,7 +40,7 @@
         </div>
     </nav>
 
-    <!-- Main Content Container -->
+
     <div class="container py-5 fade-in">
         
         <!-- Dashboard title -->
@@ -49,7 +49,6 @@
             <p class="text-white-50 mb-0">Manage customer submissions, review recommendations, upload professional plans, and track planning requests.</p>
         </div>
 
-        <!-- Metric Analytics Cards -->
         <div class="row g-4 mb-5">
             <div class="col-md-3">
                 <div class="glass-card p-4">
@@ -89,7 +88,6 @@
             </div>
         </div>
 
-        <!-- Requests Management List -->
         <h4 style="font-weight: 700; color: #fff;" class="mb-4"><i class="fas fa-list-check me-2 text-warning"></i> Customer Planner Requests</h4>
 
         <div class="glass-card p-4 rounded-4">
@@ -183,7 +181,7 @@
                                                         </div>
                                                         <div class="modal-body p-4">
                                                             
-                                                            <!-- Toggle Approval Form -->
+                    
                                                             <form action="/admin/plan/approve" method="post" class="mb-4 pb-4 border-bottom border-secondary border-opacity-25">
                                                                 <input type="hidden" name="propertyId" value="${item.propertyDetail.id}">
                                                                 <label class="form-label text-white-50">Approve Conceptual Plan</label>
