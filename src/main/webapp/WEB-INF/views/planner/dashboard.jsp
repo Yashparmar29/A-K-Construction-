@@ -115,7 +115,7 @@
             </div>
         </div>
 
-        <!-- Requests Grid -->
+    
         <h4 style="font-weight: 700; color: #fff;" class="mb-4"><i class="fas fa-list me-2 text-warning"></i> Previous Planning Requests</h4>
 
         <c:choose>
@@ -187,7 +187,7 @@
 
     </div>
 
-    <!-- Bootstrap JS Bundle -->
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
