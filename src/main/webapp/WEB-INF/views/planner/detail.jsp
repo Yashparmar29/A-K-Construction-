@@ -283,7 +283,7 @@ hu<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="
                 </span>`;
         }
 
-        // Render Room Layout table
+        
         const tableBody = document.getElementById("roomsTableBody");
         for (const [floor, rooms] of Object.entries(floorsObj)) {
             rooms.forEach(room => {
