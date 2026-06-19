@@ -106,8 +106,6 @@ hu<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="
                     <div class="p-3 bg-white bg-opacity-5 rounded-3 mb-4" style="line-height: 1.8;">
                         <p class="text-white-50 mb-0" style="white-space: pre-line;">${plan.recommendations}</p>
                     </div>
-
-                    <!-- Area Distribution Grid -->
                     <div class="row g-3">
                         <div class="col-sm-6 col-md-3">
                             <div class="p-3 bg-dark rounded-3 text-center border border-secondary border-opacity-10">
