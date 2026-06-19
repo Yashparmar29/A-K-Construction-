@@ -157,7 +157,7 @@ hu<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="
                     </div>
                 </div>
 
-                <!-- Cost breakdown and chart -->
+            
                 <div class="glass-card p-4 mb-4">
                     <h5 style="color: #fff; font-weight: 700;" class="mb-3"><i class="fas fa-indian-rupee-sign text-warning me-2"></i> Estimated Cost Breakdown</h5>
                     
