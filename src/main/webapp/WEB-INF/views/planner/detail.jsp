@@ -138,7 +138,7 @@ hu<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="
             <!-- RIGHT PANEL: Cost breakdown, materials list -->
             <div class="col-xl-4">
                 
-                <!-- Room dimension values -->
+                
                 <div class="glass-card p-4 mb-4">
                     <h5 style="color: #fff; font-weight: 700;" class="mb-3"><i class="fas fa-table-cells text-warning me-2"></i> Room Layout Breakdown</h5>
                     <div class="table-responsive">
