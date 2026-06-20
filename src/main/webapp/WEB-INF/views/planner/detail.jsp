@@ -135,7 +135,7 @@ hu<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="
                 </div>
             </div>
 
-            <!-- RIGHT PANEL: Cost breakdown, materials list -->
+        
             <div class="col-xl-4">
                 
                 
