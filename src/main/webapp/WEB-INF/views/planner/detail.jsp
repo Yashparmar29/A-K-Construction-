@@ -57,7 +57,7 @@ hu<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="
         </div>
 
         <c:if test="${not empty plan.architectDrawingUrl}">
-            <!-- Approved blueprint panel -->
+            
             <div class="glass-card p-4 mb-5 border-success border-opacity-50">
                 <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
                     <div class="d-flex align-items-center">
