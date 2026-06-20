@@ -74,9 +74,9 @@ hu<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="
 
         <div class="row g-4">
             
-            <!-- LEFT PANEL: 3D Visualization and Recommendations -->
+            
             <div class="col-xl-8">
-                <!-- 3D Viewer Card -->
+            
                 <div class="glass-card p-4 mb-4">
                     <h5 style="color: #fff; font-weight: 700;" class="mb-3"><i class="fas fa-cube text-warning me-2"></i> Interactive 3D House Model</h5>
                     
