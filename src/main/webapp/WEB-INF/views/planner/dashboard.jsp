@@ -64,7 +64,7 @@
             <a href="/planner/new" class="btn btn-gold py-3 px-4"><i class="fas fa-plus me-2"></i> Create New Layout Request</a>
         </div>
 
-        <!-- Metric Cards -->
+       
         <div class="row g-4 mb-5">
             <div class="col-md-4">
                 <div class="glass-card p-4 d-flex align-items-center">
