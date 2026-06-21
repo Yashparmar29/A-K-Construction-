@@ -396,7 +396,7 @@ hu<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="
             ground.receiveShadow = true;
             scene.add(ground);
 
-            // Grid helper representation
+            
             const grid = new THREE.GridHelper(80, 80, 0xF4C430, 0x444455);
             grid.position.y = 0.02;
             scene.add(grid);
