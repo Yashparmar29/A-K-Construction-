@@ -212,7 +212,7 @@ hu<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="
                     </div>
                 </div>
 
-                <!-- Material recommendations -->
+               
                 <div class="glass-card p-4">
                     <h5 style="color: #fff; font-weight: 700;" class="mb-3"><i class="fas fa-helmet-safety text-warning me-2"></i> Materials Quantity Suggestions</h5>
                     
