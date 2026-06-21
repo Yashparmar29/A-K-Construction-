@@ -120,7 +120,7 @@
 
         <c:choose>
             <c:when test="${empty requests}">
-                <!-- Empty State -->
+                
                 <div class="glass-card text-center p-5 rounded-4">
                     <div class="mb-4 text-warning" style="font-size: 4rem;">
                         <i class="fas fa-pencil-ruler"></i>
