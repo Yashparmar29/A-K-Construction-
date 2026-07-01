@@ -27,7 +27,7 @@
         </div>
     </nav>
 
-    <!-- Page Hero -->
+    
     <section class="page-hero">
         <div class="page-hero-content">
             <div class="breadcrumb">
