@@ -38,7 +38,7 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
+
     <section class="section">
         <div class="container">
             <div class="contact-layout">
