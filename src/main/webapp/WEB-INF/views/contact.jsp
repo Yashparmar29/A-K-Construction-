@@ -133,7 +133,7 @@
                         </div>
                     </div>
 
-                    <!-- Map Placeholder -->
+                    
                     <div class="map-placeholder">
                         <i class="fas fa-map-marked-alt"></i>
                         <p>Ahmedabad, Gujarat, India</p>
