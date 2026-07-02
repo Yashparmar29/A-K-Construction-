@@ -140,7 +140,7 @@
                         <small>123 Construction Avenue, 380001</small>
                     </div>
 
-                    <!-- Social Links -->
+                    
                     <div class="social-section">
                         <h4>Follow Us</h4>
                         <div class="social-links">
