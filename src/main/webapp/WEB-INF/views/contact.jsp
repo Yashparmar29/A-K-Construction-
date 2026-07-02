@@ -97,7 +97,7 @@
                     </form>
                 </div>
 
-                <!-- Contact Info -->
+                
                 <div class="contact-info-wrap fade-in">
                     <h2>Get In Touch</h2>
                     <p style="color:#666; margin-bottom:2rem;">We're here to help you build your dream. Reach out through any of the following.</p>
