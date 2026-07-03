@@ -54,7 +54,7 @@
                 <button class="filter-btn" data-category="Civil Engineering" id="filter-civil">Civil Engineering</button>
             </div>
 
-            <!-- Projects Grid -->
+            
             <div class="projects-grid" id="projectsGrid">
                 <div class="loading-card">
                     <i class="fas fa-spinner fa-spin"></i>
