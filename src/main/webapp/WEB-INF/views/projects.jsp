@@ -45,7 +45,7 @@
                 <p>Browse our completed projects across various categories and locations.</p>
             </div>
 
-            <!-- Filter Bar -->
+           
             <div class="filter-bar fade-in">
                 <button class="filter-btn active" data-category="" id="filter-all">All Projects</button>
                 <button class="filter-btn" data-category="Residential" id="filter-residential">Residential</button>
