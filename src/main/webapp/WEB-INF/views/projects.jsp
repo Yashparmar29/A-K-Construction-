@@ -109,7 +109,7 @@
     <button class="back-to-top" id="backToTop"><i class="fas fa-chevron-up"></i></button>
     <script src="/js/main.js"></script>
     <script>
-        // Filter buttons
+        
         document.querySelectorAll('.filter-btn').forEach(btn => {
             btn.addEventListener('click', function() {
                 document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
