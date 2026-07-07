@@ -199,7 +199,7 @@ body{font-family:'Inter',sans-serif;line-height:1.6;color:#333;overflow-x:hidden
 .back-to-top{position:fixed;bottom:2rem;right:2rem;background:var(--yellow);color:var(--black);border:none;width:48px;height:48px;border-radius:50%;font-size:1.1rem;cursor:pointer;opacity:0;visibility:hidden;transition:all .3s;z-index:1000;display:flex;align-items:center;justify-content:center;}
 .back-to-top.show{opacity:1;visibility:visible;}
 
-/* RESPONSIVE */
+
 @media(max-width:900px){
   .why-us-grid,.story-grid,.contact-layout{grid-template-columns:1fr;}
   .footer-grid{grid-template-columns:1fr 1fr;}

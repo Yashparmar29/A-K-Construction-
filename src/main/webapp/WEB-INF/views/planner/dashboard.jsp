@@ -64,7 +64,7 @@
             <a href="/planner/new" class="btn btn-gold py-3 px-4"><i class="fas fa-plus me-2"></i> Create New Layout Request</a>
         </div>
 
-        <!-- Metric Cards -->
+       
         <div class="row g-4 mb-5">
             <div class="col-md-4">
                 <div class="glass-card p-4 d-flex align-items-center">
@@ -115,12 +115,12 @@
             </div>
         </div>
 
-        <!-- Requests Grid -->
+    
         <h4 style="font-weight: 700; color: #fff;" class="mb-4"><i class="fas fa-list me-2 text-warning"></i> Previous Planning Requests</h4>
 
         <c:choose>
             <c:when test="${empty requests}">
-                <!-- Empty State -->
+                
                 <div class="glass-card text-center p-5 rounded-4">
                     <div class="mb-4 text-warning" style="font-size: 4rem;">
                         <i class="fas fa-pencil-ruler"></i>
@@ -187,7 +187,7 @@
 
     </div>
 
-    <!-- Bootstrap JS Bundle -->
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function() {

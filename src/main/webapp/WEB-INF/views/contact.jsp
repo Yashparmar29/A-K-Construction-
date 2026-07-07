@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Navigation -->
+    
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <a href="/" class="logo"><i class="fas fa-hammer"></i> A K Construction</a>
@@ -27,7 +27,7 @@
         </div>
     </nav>
 
-    <!-- Page Hero -->
+    
     <section class="page-hero">
         <div class="page-hero-content">
             <div class="breadcrumb">
@@ -38,7 +38,7 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
+
     <section class="section">
         <div class="container">
             <div class="contact-layout">
@@ -97,7 +97,7 @@
                     </form>
                 </div>
 
-                <!-- Contact Info -->
+                
                 <div class="contact-info-wrap fade-in">
                     <h2>Get In Touch</h2>
                     <p style="color:#666; margin-bottom:2rem;">We're here to help you build your dream. Reach out through any of the following.</p>
@@ -133,14 +133,14 @@
                         </div>
                     </div>
 
-                    <!-- Map Placeholder -->
+                    
                     <div class="map-placeholder">
                         <i class="fas fa-map-marked-alt"></i>
                         <p>Ahmedabad, Gujarat, India</p>
                         <small>123 Construction Avenue, 380001</small>
                     </div>
 
-                    <!-- Social Links -->
+                    
                     <div class="social-section">
                         <h4>Follow Us</h4>
                         <div class="social-links">
@@ -155,7 +155,7 @@
         </div>
     </section>
 
-    <!-- Footer -->
+    
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">

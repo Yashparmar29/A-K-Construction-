@@ -45,7 +45,7 @@
                 <p>Browse our completed projects across various categories and locations.</p>
             </div>
 
-            <!-- Filter Bar -->
+           
             <div class="filter-bar fade-in">
                 <button class="filter-btn active" data-category="" id="filter-all">All Projects</button>
                 <button class="filter-btn" data-category="Residential" id="filter-residential">Residential</button>
@@ -54,7 +54,7 @@
                 <button class="filter-btn" data-category="Civil Engineering" id="filter-civil">Civil Engineering</button>
             </div>
 
-            <!-- Projects Grid -->
+            
             <div class="projects-grid" id="projectsGrid">
                 <div class="loading-card">
                     <i class="fas fa-spinner fa-spin"></i>
@@ -109,7 +109,7 @@
     <button class="back-to-top" id="backToTop"><i class="fas fa-chevron-up"></i></button>
     <script src="/js/main.js"></script>
     <script>
-        // Filter buttons
+        
         document.querySelectorAll('.filter-btn').forEach(btn => {
             btn.addEventListener('click', function() {
                 document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));

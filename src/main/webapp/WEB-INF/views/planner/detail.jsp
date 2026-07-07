@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+hu<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
@@ -57,7 +57,7 @@
         </div>
 
         <c:if test="${not empty plan.architectDrawingUrl}">
-            <!-- Approved blueprint panel -->
+            
             <div class="glass-card p-4 mb-5 border-success border-opacity-50">
                 <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
                     <div class="d-flex align-items-center">
@@ -74,9 +74,13 @@
 
         <div class="row g-4">
             
-            <!-- LEFT PANEL: 3D Visualization and Recommendations -->
+            
             <div class="col-xl-8">
+<<<<<<< HEAD
                 <!-- Interactive House Planner Card -->
+=======
+            
+>>>>>>> b27deffaf14836ddd4fcbd065f8479ee93ebea1e
                 <div class="glass-card p-4 mb-4">
                     <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
                         <h5 style="color: #fff; font-weight: 700;" class="m-0">
@@ -151,15 +155,13 @@
                     </div>
                 </div>
 
-                <!-- Recommendations Text Card -->
+            
                 <div class="glass-card p-4">
                     <h5 style="color: #fff; font-weight: 700;" class="mb-3"><i class="fas fa-compass text-warning me-2"></i> Spatial & Structural Recommendations</h5>
                     
                     <div class="p-3 bg-white bg-opacity-5 rounded-3 mb-4" style="line-height: 1.8;">
                         <p class="text-white-50 mb-0" style="white-space: pre-line;">${plan.recommendations}</p>
                     </div>
-
-                    <!-- Area Distribution Grid -->
                     <div class="row g-3">
                         <div class="col-sm-6 col-md-3">
                             <div class="p-3 bg-dark rounded-3 text-center border border-secondary border-opacity-10">
@@ -189,10 +191,10 @@
                 </div>
             </div>
 
-            <!-- RIGHT PANEL: Cost breakdown, materials list -->
+        
             <div class="col-xl-4">
                 
-                <!-- Room dimension values -->
+                
                 <div class="glass-card p-4 mb-4">
                     <h5 style="color: #fff; font-weight: 700;" class="mb-3"><i class="fas fa-table-cells text-warning me-2"></i> Room Layout Breakdown</h5>
                     <div class="table-responsive">
@@ -211,7 +213,7 @@
                     </div>
                 </div>
 
-                <!-- Cost breakdown and chart -->
+            
                 <div class="glass-card p-4 mb-4">
                     <h5 style="color: #fff; font-weight: 700;" class="mb-3"><i class="fas fa-indian-rupee-sign text-warning me-2"></i> Estimated Cost Breakdown</h5>
                     
@@ -266,7 +268,7 @@
                     </div>
                 </div>
 
-                <!-- Material recommendations -->
+               
                 <div class="glass-card p-4">
                     <h5 style="color: #fff; font-weight: 700;" class="mb-3"><i class="fas fa-helmet-safety text-warning me-2"></i> Materials Quantity Suggestions</h5>
                     
@@ -467,7 +469,7 @@
                 </span>`;
         }
 
-        // Render Room Layout table
+        
         const tableBody = document.getElementById("roomsTableBody");
         for (const [floor, rooms] of Object.entries(floorsObj)) {
             rooms.forEach(room => {
@@ -956,7 +958,12 @@
             ground.receiveShadow = true;
             scene.add(ground);
 
+<<<<<<< HEAD
             const grid = new THREE.GridHelper(100, 100, 0xF4C430, 0x444455);
+=======
+            
+            const grid = new THREE.GridHelper(80, 80, 0xF4C430, 0x444455);
+>>>>>>> b27deffaf14836ddd4fcbd065f8479ee93ebea1e
             grid.position.y = 0.02;
             scene.add(grid);
 

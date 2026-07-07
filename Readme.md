@@ -18,8 +18,8 @@ A K Construction is a premium, high-performance web application designed for a m
 -   **📧 Interactive Contact Form:** Seamless communication channel with built-in validation and database integration.
 -   **⚡ Fast & Secure:** Built on Spring Boot for high performance and standard security practices.
 
-## 🚀 Tech Stack
 
+## 🌟 Take Revise
 -   **Backend:** Java 8, Spring Boot 2.7.18, Spring MVC
 -   **Data Access:** Spring JDBC
 -   **Database:** MySQL 8.0
