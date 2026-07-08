@@ -1103,12 +1103,7 @@
                         ground.receiveShadow = true;
                         scene.add(ground);
 
-<<<<<<< HEAD
                         const grid = new THREE.GridHelper(100, 100, 0xF4C430, 0x444455);
-=======
-
-            const grid = new THREE.GridHelper(80, 80, 0xF4C430, 0x444455);
->>>>>>> b27deffaf14836ddd4fcbd065f8479ee93ebea1e
                         grid.position.y = 0.02;
                         scene.add(grid);
 
