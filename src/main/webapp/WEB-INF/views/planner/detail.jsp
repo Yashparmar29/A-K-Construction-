@@ -621,9 +621,9 @@
                             let dim = dimensionsObj[room] || "As required";
                             tableBody.innerHTML += `
                     <tr>
-                        <td class="text-white-50" style="font-size:0.85rem;">${floor}</td>
-                        <td style="font-weight: 600;">${room}</td>
-                        <td class="text-end text-warning" style="font-weight: 700;">${dim} ft</td>
+                        <td class="text-white-50" style="font-size:0.85rem;">\${floor}</td>
+                        <td style="font-weight: 600;">\${room}</td>
+                        <td class="text-end text-warning" style="font-weight: 700;">\${dim} ft</td>
                     </tr>`;
                         });
                     }
@@ -739,7 +739,7 @@
                         const hoverCard = document.getElementById("hover-card");
                         if (hoveredRoom) {
                             document.getElementById("hover-room-name").innerText = hoveredRoom.name;
-                            let desc = `<strong>Dimensions:</strong> ${Math.round(hoveredRoom.w)}' × ${Math.round(hoveredRoom.l)}' (${Math.round(hoveredRoom.w * hoveredRoom.l)} sq ft)<br>`;
+                            let desc = `<strong>Dimensions:</strong> \${Math.round(hoveredRoom.w)}' × \${Math.round(hoveredRoom.l)}' (\${Math.round(hoveredRoom.w * hoveredRoom.l)} sq ft)<br>`;
 
                             if (hoveredRoom.name.includes("Kitchen")) {
                                 desc += "Agni corner (South-East). Ideal placement for safety, natural light, and clean utility pipelines.";
@@ -973,12 +973,12 @@
                         ctx.textAlign = "center";
                         ctx.textBaseline = "middle";
                         activeRooms.forEach(room => {
-                            ctx.font = `bold ${Math.max(12 / zoom, 1.2)}px Inter, sans-serif`;
+                            ctx.font = `bold \${Math.max(12 / zoom, 1.2)}px Inter, sans-serif`;
                             ctx.fillText(room.name, room.x, room.z - 0.4);
 
-                            ctx.font = `${Math.max(9 / zoom, 0.9)}px Inter, sans-serif`;
+                            ctx.font = `\${Math.max(9 / zoom, 0.9)}px Inter, sans-serif`;
                             ctx.fillStyle = "rgba(255,255,255,0.6)";
-                            ctx.fillText(`${Math.round(room.w)}' × ${Math.round(room.l)}'`, room.x, room.z + 0.6);
+                            ctx.fillText(`\${Math.round(room.w)}' × \${Math.round(room.l)}'`, room.x, room.z + 0.6);
                             ctx.fillStyle = "#ffffff";
                         });
 
