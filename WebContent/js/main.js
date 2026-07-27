@@ -122,7 +122,7 @@ function loadProjects(category = '') {
     // Show loading
     projectsContainer.innerHTML = '<div class="glass-card text-center p-5"><h3>Loading projects...</h3></div>';
     
-    const url = category ? `/projects?category=${encodeURIComponent(category)}` : '/projects';
+    const url = category ? `/api/projects?category=${encodeURIComponent(category)}` : '/api/projects';
     
     fetch(url)
         .then(response => response.json())
@@ -135,11 +135,16 @@ function loadProjects(category = '') {
             }
             
             projects.forEach(project => {
+                let imgSrc = project.image || '/images/default-project.jpg';
+                if (!imgSrc.startsWith('/') && !imgSrc.startsWith('http')) {
+                    imgSrc = '/' + imgSrc;
+                }
                 const projectCard = `
                     <div class="project-card fade-in">
-                        <img src="${project.image || 'images/default-project.jpg'}" 
+                        <img src="${imgSrc}" 
                              alt="${project.title}" 
-                             loading="lazy">
+                             loading="lazy"
+                             onerror="this.onerror=null;this.src='/images/default-project.jpg';">
                         <div class="project-info">
                             <span class="category-badge">${project.category}</span>
                             <h3>${project.title}</h3>

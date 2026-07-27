@@ -123,7 +123,7 @@
     <script>
         // Load featured projects on home page
         document.addEventListener('DOMContentLoaded', function() {
-            fetch('/projects')
+            fetch('/api/projects')
                 .then(response => response.json())
                 .then(projects => {
                     const container = document.getElementById('featured-projects');
@@ -131,9 +131,13 @@
                     
                     // Show only first 3 projects
                     projects.slice(0, 3).forEach(project => {
+                        let imgSrc = project.image || '/images/default-project.jpg';
+                        if (!imgSrc.startsWith('/') && !imgSrc.startsWith('http')) {
+                            imgSrc = '/' + imgSrc;
+                        }
                         const projectCard = `
                             <div class="project-card fade-in">
-                                <img src="${project.image || 'images/default-project.jpg'}" alt="${project.title}">
+                                <img src="${imgSrc}" alt="${project.title}" onerror="this.onerror=null;this.src='/images/default-project.jpg';">
                                 <div class="project-info">
                                     <span class="category-badge">${project.category}</span>
                                     <h3>${project.title}</h3>
