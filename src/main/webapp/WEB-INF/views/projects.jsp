@@ -133,10 +133,14 @@
                         return;
                     }
                     projects.forEach(p => {
+                        let imgSrc = p.image || '/images/default-project.jpg';
+                        if (!imgSrc.startsWith('/') && !imgSrc.startsWith('http')) {
+                            imgSrc = '/' + imgSrc;
+                        }
                         grid.innerHTML += `
                             <div class="project-card fade-in visible">
                                 <div class="project-img-wrap">
-                                    <img src="${p.image || '/images/default-project.jpg'}" alt="${p.title}" onerror="this.src='/images/default-project.jpg'">
+                                    <img src="${imgSrc}" alt="${p.title}" onerror="this.onerror=null;this.src='/images/default-project.jpg';">
                                     <span class="category-badge">${p.category}</span>
                                 </div>
                                 <div class="project-info">

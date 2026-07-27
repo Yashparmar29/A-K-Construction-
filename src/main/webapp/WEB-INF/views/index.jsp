@@ -262,10 +262,14 @@
                     const container = document.getElementById('featured-projects');
                     container.innerHTML = '';
                     projects.slice(0, 3).forEach(project => {
+                        let imgSrc = project.image || '/images/default-project.jpg';
+                        if (!imgSrc.startsWith('/') && !imgSrc.startsWith('http')) {
+                            imgSrc = '/' + imgSrc;
+                        }
                         container.innerHTML += `
                             <div class="project-card fade-in">
                                 <div class="project-img-wrap">
-                                    <img src="${project.image || '/images/default-project.jpg'}" alt="${project.title}" onerror="this.src='/images/default-project.jpg'">
+                                    <img src="${imgSrc}" alt="${project.title}" onerror="this.onerror=null;this.src='/images/default-project.jpg';">
                                     <span class="category-badge">${project.category}</span>
                                 </div>
                                 <div class="project-info">
