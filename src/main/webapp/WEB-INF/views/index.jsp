@@ -28,7 +28,7 @@
         </div>
     </nav>
 
-    <section id="home" class="hero">
+ <section id="home" class="hero">
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <div class="hero-badge fade-in-hero">⭐ Trusted Since 2005</div>
