@@ -28,6 +28,12 @@ public class AdminController {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private ProjectRepository projectRepository;
+
+    @Autowired
+    private ContactRepository contactRepository;
+
     @GetMapping("/admin/dashboard")
     public String adminDashboard(HttpSession session, Model model) {
         User user = (User) session.getAttribute("user");
@@ -62,6 +68,11 @@ public class AdminController {
         model.addAttribute("approvedRequests", approvedCount);
         model.addAttribute("vastuRequests", vastuCount);
         model.addAttribute("usersCount", userRepository.count());
+
+        // CMS Data
+        model.addAttribute("allUsers", userRepository.findAll());
+        model.addAttribute("allProjects", projectRepository.findAll());
+        model.addAttribute("allContacts", contactRepository.findAll());
 
         return "admin/dashboard";
     }
@@ -137,6 +148,76 @@ public class AdminController {
             }
         }
 
+        return "redirect:/admin/dashboard";
+    }
+
+    @PostMapping("/admin/project/add")
+    public String addProject(
+            @RequestParam String title,
+            @RequestParam String category,
+            @RequestParam String description,
+            @RequestParam("imageFile") MultipartFile file,
+            HttpServletRequest request,
+            HttpSession session) {
+
+        User user = (User) session.getAttribute("user");
+        if (user == null || !user.getRole().equalsIgnoreCase("ADMIN")) {
+            return "redirect:/login";
+        }
+
+        String imageUrl = "";
+        if (!file.isEmpty()) {
+            try {
+                String uploadsDir = request.getServletContext().getRealPath("/") + "images" + File.separator;
+                File dir = new File(uploadsDir);
+                if (!dir.exists()) {
+                    dir.mkdirs();
+                }
+
+                String filename = "proj_" + System.currentTimeMillis() + "_" + file.getOriginalFilename().replaceAll("[^a-zA-Z0-9.]", "_");
+                File dest = new File(uploadsDir + filename);
+                file.transferTo(dest);
+                imageUrl = "images/" + filename;
+            } catch (Exception e) {
+                System.err.println("Failed to upload project image: " + e.getMessage());
+            }
+        }
+
+        Project project = new Project();
+        project.setTitle(title);
+        project.setCategory(category);
+        project.setDescription(description);
+        project.setImage(imageUrl);
+
+        projectRepository.save(project);
+
+        return "redirect:/admin/dashboard";
+    }
+
+    @PostMapping("/admin/project/delete")
+    public String deleteProject(@RequestParam int id, HttpSession session) {
+        User user = (User) session.getAttribute("user");
+        if (user != null && user.getRole().equalsIgnoreCase("ADMIN")) {
+            projectRepository.delete(id);
+        }
+        return "redirect:/admin/dashboard";
+    }
+
+    @PostMapping("/admin/contact/delete")
+    public String deleteContact(@RequestParam int id, HttpSession session) {
+        User user = (User) session.getAttribute("user");
+        if (user != null && user.getRole().equalsIgnoreCase("ADMIN")) {
+            contactRepository.delete(id);
+        }
+        return "redirect:/admin/dashboard";
+    }
+
+    @PostMapping("/admin/user/delete")
+    public String deleteUser(@RequestParam int id, HttpSession session) {
+        User user = (User) session.getAttribute("user");
+        if (user != null && user.getRole().equalsIgnoreCase("ADMIN")) {
+            userRepository.delete(id);
+        }
         return "redirect:/admin/dashboard";
     }
 
