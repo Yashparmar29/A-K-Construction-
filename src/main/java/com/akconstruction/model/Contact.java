@@ -1,11 +1,14 @@
 package com.akconstruction.model;
 
+import java.sql.Timestamp;
+
 public class Contact {
     private int id;
     private String name;
     private String email;
     private String phone;
     private String message;
+    private Timestamp submittedDate;
 
     public Contact() {}
 
@@ -30,4 +33,7 @@ public class Contact {
 
     public String getMessage() { return message; }
     public void setMessage(String message) { this.message = message; }
+
+    public Timestamp getSubmittedDate() { return submittedDate; }
+    public void setSubmittedDate(Timestamp submittedDate) { this.submittedDate = submittedDate; }
 }
