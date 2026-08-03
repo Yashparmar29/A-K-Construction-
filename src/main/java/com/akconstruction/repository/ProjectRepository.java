@@ -46,4 +46,8 @@ public class ProjectRepository {
             project.getTitle(), project.getCategory(), project.getImage(), project.getDescription()
         );
     }
+
+    public int delete(int id) {
+        return jdbcTemplate.update("DELETE FROM projects WHERE id = ?", id);
+    }
 }

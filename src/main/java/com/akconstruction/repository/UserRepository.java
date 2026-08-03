@@ -59,4 +59,8 @@ public class UserRepository {
         Integer count = jdbcTemplate.queryForObject("SELECT COUNT(*) FROM users", Integer.class);
         return count != null ? count : 0;
     }
+
+    public int delete(int id) {
+        return jdbcTemplate.update("DELETE FROM users WHERE id = ?", id);
+    }
 }
