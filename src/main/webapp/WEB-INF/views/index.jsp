@@ -23,6 +23,7 @@
                 <li><a href="/projects">Projects</a></li>
                 <li><a href="/planner/dashboard">AI Planner</a></li>
                 <li><a href="/contact">Contact</a></li>
+                <li><a href="/login" class="nav-btn"><i class="fas fa-user-circle"></i></a></li>
             </ul>
             <button class="nav-toggle" id="navToggle"><i class="fas fa-bars"></i></button>
         </div>
@@ -266,18 +267,25 @@
                         if (!imgSrc.startsWith('/') && !imgSrc.startsWith('http')) {
                             imgSrc = '/' + imgSrc;
                         }
-                        container.innerHTML += `
-                            <div class="project-card fade-in">
-                                <div class="project-img-wrap">
-                                    <img src="${imgSrc}" alt="${project.title}" onerror="this.onerror=null;this.src='/images/default-project.jpg';">
-                                    <span class="category-badge">${project.category}</span>
-                                </div>
-                                <div class="project-info">
-                                    <h3>${project.title}</h3>
-                                    <p>${project.description.substring(0, 90)}...</p>
-                                    <a href="/projects" class="card-link">View Details <i class="fas fa-arrow-right"></i></a>
-                                </div>
-                            </div>`;
+                        const title = project.title || 'Construction Project';
+                        const category = project.category || 'General';
+                        const desc = project.description || '';
+                        const shortDesc = desc.length > 90 ? desc.substring(0, 90) + '...' : desc;
+
+                        const cardHtml = 
+                            '<div class="project-card fade-in">' +
+                                '<div class="project-img-wrap">' +
+                                    '<img src="' + imgSrc + '" alt="' + title + '" onerror="this.onerror=null;this.src=\'/images/default-project.jpg\';">' +
+                                    '<span class="category-badge">' + category + '</span>' +
+                                '</div>' +
+                                '<div class="project-info">' +
+                                    '<h3>' + title + '</h3>' +
+                                    '<p>' + shortDesc + '</p>' +
+                                    '<a href="/projects" class="card-link">View Details <i class="fas fa-arrow-right"></i></a>' +
+                                '</div>' +
+                            '</div>';
+
+                        container.innerHTML += cardHtml;
                     });
                     document.querySelectorAll('.fade-in').forEach(el => {
                         setTimeout(() => el.classList.add('visible'), 100);
