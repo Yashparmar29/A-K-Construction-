@@ -22,6 +22,7 @@
                 <li><a href="/services">Services</a></li>
                 <li><a href="/projects">Projects</a></li>
                 <li><a href="/contact" class="active">Contact</a></li>
+                <li><a href="/login" class="nav-btn"><i class="fas fa-user-circle"></i> Login/Register</a></li>
             </ul>
             <button class="nav-toggle" id="navToggle"><i class="fas fa-bars"></i></button>
         </div>
