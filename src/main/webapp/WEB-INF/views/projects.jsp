@@ -20,6 +20,7 @@
                 <li><a href="/services">Services</a></li>
                 <li><a href="/projects" class="active">Projects</a></li>
                 <li><a href="/contact">Contact</a></li>
+                <li><a href="/login" class="nav-btn"><i class="fas fa-user-circle"></i> Login/Register</a></li>
             </ul>
             <button class="nav-toggle" id="navToggle"><i class="fas fa-bars"></i></button>
         </div>
@@ -137,17 +138,23 @@
                         if (!imgSrc.startsWith('/') && !imgSrc.startsWith('http')) {
                             imgSrc = '/' + imgSrc;
                         }
-                        grid.innerHTML += `
-                            <div class="project-card fade-in visible">
-                                <div class="project-img-wrap">
-                                    <img src="${imgSrc}" alt="${p.title}" onerror="this.onerror=null;this.src='/images/default-project.jpg';">
-                                    <span class="category-badge">${p.category}</span>
-                                </div>
-                                <div class="project-info">
-                                    <h3>${p.title}</h3>
-                                    <p>${p.description}</p>
-                                </div>
-                            </div>`;
+                        const title = p.title || 'Construction Project';
+                        const category = p.category || 'General';
+                        const desc = p.description || 'No description available.';
+
+                        const cardHtml = 
+                            '<div class="project-card fade-in visible">' +
+                                '<div class="project-img-wrap">' +
+                                    '<img src="' + imgSrc + '" alt="' + title + '" onerror="this.onerror=null;this.src=\'/images/default-project.jpg\';">' +
+                                    '<span class="category-badge">' + category + '</span>' +
+                                '</div>' +
+                                '<div class="project-info">' +
+                                    '<h3>' + title + '</h3>' +
+                                    '<p>' + desc + '</p>' +
+                                '</div>' +
+                            '</div>';
+
+                        grid.innerHTML += cardHtml;
                     });
                 })
                 .catch(() => {
