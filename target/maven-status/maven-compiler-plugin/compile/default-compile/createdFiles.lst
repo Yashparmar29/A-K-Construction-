@@ -6,6 +6,7 @@ com\akconstruction\model\PdfReport.class
 com\akconstruction\repository\CostEstimationRepository$1.class
 com\akconstruction\repository\PropertyDetailRepository$2.class
 com\akconstruction\controller\AdminController$AdminPlanWrapper.class
+com\akconstruction\repository\ContactRepository$1.class
 com\akconstruction\model\MaterialEstimation.class
 com\akconstruction\repository\UserRepository.class
 com\akconstruction\controller\ProjectController.class
