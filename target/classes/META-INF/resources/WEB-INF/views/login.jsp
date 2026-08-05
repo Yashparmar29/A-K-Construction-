@@ -85,6 +85,11 @@
                 Don't have an account? 
                 <a href="/register" style="color: var(--yellow); text-decoration: none; font-weight: 600;">Sign Up</a>
             </p>
+            <div class="mt-4 pt-3 border-top border-secondary border-opacity-25">
+                <a href="/admin/dashboard" style="color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.85rem; transition: 0.3s;">
+                    <i class="fas fa-shield-alt me-1"></i> Go to Admin Dashboard
+                </a>
+            </div>
         </div>
     </div>
 
