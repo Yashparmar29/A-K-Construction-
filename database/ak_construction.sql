@@ -1,4 +1,3 @@
-
 CREATE DATABASE IF NOT EXISTS ak_construction;
 USE ak_construction;
 
