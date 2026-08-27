@@ -45,6 +45,9 @@ public class PlannerController {
         if (user == null) {
             return "redirect:/login";
         }
+        if ("EMPLOYEE".equalsIgnoreCase(user.getRole())) {
+            return "redirect:/employee/dashboard";
+        }
         
         List<PropertyDetail> requests = propertyDetailRepository.findByUserId(user.getId());
         model.addAttribute("requests", requests);
@@ -53,8 +56,12 @@ public class PlannerController {
 
     @GetMapping("/planner/new")
     public String newPlanForm(HttpSession session) {
-        if (session.getAttribute("user") == null) {
+        User user = (User) session.getAttribute("user");
+        if (user == null) {
             return "redirect:/login";
+        }
+        if ("EMPLOYEE".equalsIgnoreCase(user.getRole())) {
+            return "redirect:/employee/dashboard";
         }
         return "planner/form";
     }
@@ -86,6 +93,9 @@ public class PlannerController {
         User user = (User) session.getAttribute("user");
         if (user == null) {
             return "redirect:/login";
+        }
+        if ("EMPLOYEE".equalsIgnoreCase(user.getRole())) {
+            return "redirect:/employee/dashboard";
         }
 
         PropertyDetail pd = new PropertyDetail();
@@ -122,6 +132,9 @@ public class PlannerController {
         User user = (User) session.getAttribute("user");
         if (user == null) {
             return "redirect:/login";
+        }
+        if ("EMPLOYEE".equalsIgnoreCase(user.getRole())) {
+            return "redirect:/employee/dashboard";
         }
 
         PropertyDetail pd = propertyDetailRepository.findById(id);
