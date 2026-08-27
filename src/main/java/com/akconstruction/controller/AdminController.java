@@ -212,11 +212,74 @@ public class AdminController {
         return "redirect:/admin/dashboard";
     }
 
+    @PostMapping("/admin/user/update-role")
+    public String updateUserRole(@RequestParam int id, @RequestParam String role, HttpSession session) {
+        User user = (User) session.getAttribute("user");
+        if (user != null && user.getRole().equalsIgnoreCase("ADMIN")) {
+            userRepository.updateRole(id, role);
+        }
+        return "redirect:/admin/dashboard";
+    }
+
     @PostMapping("/admin/user/delete")
     public String deleteUser(@RequestParam int id, HttpSession session) {
         User user = (User) session.getAttribute("user");
         if (user != null && user.getRole().equalsIgnoreCase("ADMIN")) {
             userRepository.delete(id);
+        }
+        return "redirect:/admin/dashboard";
+    }
+
+    @GetMapping("/admin/switch-account")
+    public String switchAccount(@RequestParam int userId, HttpSession session) {
+        User currentUser = (User) session.getAttribute("user");
+        User origAdmin = (User) session.getAttribute("adminOriginalUser");
+
+        if (currentUser == null && origAdmin == null) return "redirect:/login";
+        if (origAdmin == null && !"ADMIN".equalsIgnoreCase(currentUser.getRole())) return "redirect:/login";
+
+        User masterAdmin = (origAdmin != null) ? origAdmin : currentUser;
+        User targetUser = userRepository.findById(userId);
+        if (targetUser == null) return "redirect:/admin/dashboard";
+
+        session.setAttribute("adminOriginalUser", masterAdmin);
+        session.setAttribute("user", targetUser);
+
+        String role = targetUser.getRole();
+        if ("WORKER".equalsIgnoreCase(role)) return "redirect:/employee/worker/dashboard";
+        if ("CONTRACTOR".equalsIgnoreCase(role)) return "redirect:/employee/contractor/dashboard";
+        if ("EMPLOYEE".equalsIgnoreCase(role)) return "redirect:/employee/dashboard";
+        if ("ADMIN".equalsIgnoreCase(role)) return "redirect:/admin/dashboard";
+        return "redirect:/";
+    }
+
+    @GetMapping("/admin/switch-back")
+    public String switchBackToAdmin(HttpSession session) {
+        User origAdmin = (User) session.getAttribute("adminOriginalUser");
+        if (origAdmin != null) {
+            session.setAttribute("user", origAdmin);
+            session.removeAttribute("adminOriginalUser");
+        }
+        return "redirect:/admin/dashboard";
+    }
+
+    @PostMapping("/admin/user/edit")
+    public String editUserInformation(
+            @RequestParam int id,
+            @RequestParam String name,
+            @RequestParam String email,
+            @RequestParam String phone,
+            @RequestParam String role,
+            @RequestParam String status,
+            @RequestParam(required = false) String password,
+            HttpSession session) {
+
+        User user = (User) session.getAttribute("user");
+        User origAdmin = (User) session.getAttribute("adminOriginalUser");
+        boolean isAdmin = (user != null && "ADMIN".equalsIgnoreCase(user.getRole())) || (origAdmin != null && "ADMIN".equalsIgnoreCase(origAdmin.getRole()));
+
+        if (isAdmin) {
+            userRepository.updateUser(id, name, email, phone, role, status, password);
         }
         return "redirect:/admin/dashboard";
     }

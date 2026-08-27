@@ -1,0 +1,19 @@
+ID	Name	Email (Login Username)	Password	Code	Supervisor Contractor
+93	Amit Kumar	worker1@akconstruction.com	wrk123	WRK-2001	Ramesh Patel
+94	Dinesh Verma	worker2@akconstruction.com	wrk123	WRK-2002	Ramesh Patel
+95	Manoj Yadav	worker3@akconstruction.com	wrk123	WRK-2003	Suresh Sharma
+96	Sunil Chauhan	worker4@akconstruction.com	wrk123	WRK-2004	Suresh Sharma
+97	Sanjay Solanki	worker5@akconstruction.com	wrk123	WRK-2005	Vikram Singh
+98	Vijay Rathod	worker6@akconstruction.com	wrk123	WRK-2006	Vikram Singh
+99	Rahul Prajapati	worker7@akconstruction.com	wrk123	WRK-2007	Anil Mehta
+100	Ajay Thakor	worker8@akconstruction.com	wrk123	WRK-2008	Anil Mehta
+101	Mahesh Barot	worker9@akconstruction.com	wrk123	WRK-2009	Rajesh Kumar
+102	Deepak Mali	worker10@akconstruction.com	wrk123	WRK-2010	Rajesh Kumar
+
+
+ID	Name	Email (Login Username)	Password	Code	Assigned Workers
+88	Ramesh Patel	contractor1@akconstruction.com	con123	CON-1001	Worker 1, Worker 2
+89	Suresh Sharma	contractor2@akconstruction.com	con123	CON-1002	Worker 3, Worker 4
+90	Vikram Singh	contractor3@akconstruction.com	con123	CON-1003	Worker 5, Worker 6
+91	Anil Mehta	contractor4@akconstruction.com	con123	CON-1004	Worker 7, Worker 8
+92	Rajesh Kumar	contractor5@akconstruction.com	con123	CON-1005	Worker 9, Worker 10
