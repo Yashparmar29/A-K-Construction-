@@ -37,6 +37,20 @@
         .login-logo i {
             margin-right: 8px;
         }
+        .role-badge-btn {
+            border: 1px solid rgba(255, 255, 255, 0.15) !important;
+            background: rgba(255, 255, 255, 0.05) !important;
+            color: rgba(255, 255, 255, 0.75) !important;
+            font-size: 0.82rem !important;
+            transition: all 0.3s ease !important;
+            cursor: pointer;
+        }
+        .role-badge-btn:hover, .role-badge-btn.active {
+            background: rgba(245, 158, 11, 0.2) !important;
+            border-color: #f59e0b !important;
+            color: #f59e0b !important;
+            box-shadow: 0 0 12px rgba(245, 158, 11, 0.3);
+        }
     </style>
 </head>
 <body class="planner-bg">
@@ -58,6 +72,25 @@
             </c:if>
 
             <form action="/login" method="post" class="text-start">
+                <!-- Quick Role / Demo Selector -->
+                <div class="mb-3">
+                    <label class="form-label" style="font-weight: 500; color: rgba(255,255,255,0.8);">Select Role / Quick Demo Login</label>
+                    <div class="d-flex justify-content-between gap-1 flex-wrap">
+                        <button type="button" class="btn role-badge-btn flex-fill py-2 px-1 rounded-3 small" onclick="fillCredentials('user@akconstruction.com', 'user123', this)">
+                            <i class="fas fa-user-tie d-block mb-1"></i> Client
+                        </button>
+                        <button type="button" class="btn role-badge-btn flex-fill py-2 px-1 rounded-3 small" onclick="fillCredentials('contractor@akconstruction.com', 'con123', this)">
+                            <i class="fas fa-user-ninja d-block mb-1"></i> Contractor
+                        </button>
+                        <button type="button" class="btn role-badge-btn flex-fill py-2 px-1 rounded-3 small" onclick="fillCredentials('worker@akconstruction.com', 'wrk123', this)">
+                            <i class="fas fa-tools d-block mb-1"></i> Worker
+                        </button>
+                        <button type="button" class="btn role-badge-btn flex-fill py-2 px-1 rounded-3 small" onclick="fillCredentials('admin@akconstruction.com', 'admin123', this)">
+                            <i class="fas fa-user-shield d-block mb-1"></i> Admin
+                        </button>
+                    </div>
+                </div>
+
                 <div class="mb-3">
                     <label for="email" class="form-label" style="font-weight: 500; color: rgba(255,255,255,0.8);">Email Address</label>
                     <div class="input-group">
@@ -85,13 +118,30 @@
                 Don't have an account? 
                 <a href="/register" style="color: var(--yellow); text-decoration: none; font-weight: 600;">Sign Up</a>
             </p>
-            <div class="mt-4 pt-3 border-top border-secondary border-opacity-25">
-                <a href="/admin/dashboard" style="color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.85rem; transition: 0.3s;">
-                    <i class="fas fa-shield-alt me-1"></i> Go to Admin Dashboard
+            <div class="mt-4 pt-3 border-top border-secondary border-opacity-25 d-flex justify-content-center gap-3">
+                <a href="/planner/dashboard" style="color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.85rem;" title="House Planner">
+                    <i class="fas fa-home me-1"></i> Client Portal
+                </a>
+                <a href="/employee/dashboard" style="color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.85rem;" title="Employee Dashboard">
+                    <i class="fas fa-hard-hat me-1"></i> Employee Portal
+                </a>
+                <a href="/admin/dashboard" style="color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.85rem;" title="Admin Dashboard">
+                    <i class="fas fa-shield-alt me-1"></i> Admin Portal
                 </a>
             </div>
         </div>
     </div>
+
+    <script>
+        function fillCredentials(email, password, btnElement) {
+            document.getElementById('email').value = email;
+            document.getElementById('password').value = password;
+            document.querySelectorAll('.role-badge-btn').forEach(btn => btn.classList.remove('active'));
+            if (btnElement) {
+                btnElement.classList.add('active');
+            }
+        }
+    </script>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
