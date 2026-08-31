@@ -230,8 +230,6 @@
                         </table>
                     </div>
                 </div>
-
-                </div>
             </div>
 
             <!-- TAB 2: PROJECTS GALLERY -->
@@ -344,7 +342,10 @@
             <!-- TAB 4: USERS -->
             <div class="tab-pane fade" id="users" role="tabpanel" aria-labelledby="users-tab">
                 <div class="d-flex justify-content-between align-items-center mb-4">
-                    <h4 style="font-weight: 700; color: #fff;" class="mb-0">Registered Users</h4>
+                    <div>
+                        <h4 style="font-weight: 700; color: #fff;" class="mb-0">All System Accounts & Master Access</h4>
+                        <p class="text-white-50 small mb-0">Admin master access panel - enter any account or edit profile details at any time.</p>
+                    </div>
                 </div>
                 <div class="glass-card p-4 rounded-4">
                     <div class="table-responsive">
@@ -352,11 +353,11 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Role</th>
-                                    <th>Join Date</th>
-                                    <th class="text-end">Actions</th>
+                                    <th>Account Name</th>
+                                    <th>Email / Phone</th>
+                                    <th>Access Role</th>
+                                    <th>Status</th>
+                                    <th class="text-end">Master Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -368,29 +369,67 @@
                                         <c:forEach var="usr" items="${allUsers}">
                                             <tr>
                                                 <td>#${usr.id}</td>
-                                                <td><strong class="text-white">${usr.name}</strong></td>
-                                                <td>${usr.email}</td>
+                                                <td>
+                                                    <strong class="text-white">${usr.name}</strong><br>
+                                                    <small class="text-warning font-monospace">${usr.employeeCode}</small>
+                                                </td>
+                                                <td>
+                                                    <span class="text-white">${usr.email}</span><br>
+                                                    <small class="text-white-50">${empty usr.phone ? '+91 N/A' : usr.phone}</small>
+                                                </td>
                                                 <td>
                                                     <c:choose>
-                                                        <c:when test="${usr.role == 'ADMIN'}"><span class="badge bg-warning text-dark">ADMIN</span></c:when>
-                                                        <c:otherwise><span class="badge bg-secondary">USER</span></c:otherwise>
-                                                    </c:choose>
-                                                </td>
-                                                <td class="text-white-50">
-                                                    <fmt:formatDate value="${usr.createdDate}" pattern="dd MMM yyyy"/>
-                                                </td>
-                                                <td class="text-end">
-                                                    <c:choose>
                                                         <c:when test="${usr.role == 'ADMIN'}">
-                                                            <button class="btn btn-outline-secondary btn-sm rounded-pill" disabled><i class="fas fa-lock"></i></button>
+                                                            <span class="badge bg-warning text-dark fw-bold"><i class="fas fa-shield-alt me-1"></i> ADMIN</span>
+                                                        </c:when>
+                                                        <c:when test="${usr.role == 'CONTRACTOR'}">
+                                                            <span class="badge bg-primary text-white fw-bold"><i class="fas fa-user-ninja me-1"></i> CONTRACTOR</span>
+                                                        </c:when>
+                                                        <c:when test="${usr.role == 'WORKER'}">
+                                                            <span class="badge bg-success text-white fw-bold"><i class="fas fa-hammer me-1"></i> WORKER</span>
+                                                        </c:when>
+                                                        <c:when test="${usr.role == 'EMPLOYEE'}">
+                                                            <span class="badge bg-info text-dark fw-bold"><i class="fas fa-hard-hat me-1"></i> EMPLOYEE</span>
                                                         </c:when>
                                                         <c:otherwise>
-                                                            <form action="/admin/user/delete" method="post" onsubmit="return confirm('Delete this user?');">
-                                                                <input type="hidden" name="id" value="${usr.id}">
-                                                                <button type="submit" class="btn btn-outline-danger btn-sm rounded-pill"><i class="fas fa-trash"></i></button>
-                                                            </form>
+                                                            <span class="badge bg-secondary"><i class="fas fa-user me-1"></i> CLIENT</span>
                                                         </c:otherwise>
                                                     </c:choose>
+                                                </td>
+                                                <td>
+                                                    <c:choose>
+                                                        <c:when test="${usr.status == 'ACTIVE'}">
+                                                            <span class="badge bg-success bg-opacity-25 text-success border border-success px-2 py-1">ACTIVE</span>
+                                                        </c:when>
+                                                        <c:otherwise>
+                                                            <span class="badge bg-danger bg-opacity-25 text-danger border border-danger px-2 py-1">INACTIVE</span>
+                                                        </c:otherwise>
+                                                    </c:choose>
+                                                </td>
+                                                <td class="text-end">
+                                                    <div class="d-flex justify-content-end align-items-center gap-2">
+                                                        <!-- Enter Account 1-Click Master Access -->
+                                                        <a href="/admin/switch-account?userId=${usr.id}" class="btn btn-warning btn-sm rounded-pill font-monospace fw-bold px-3 shadow" title="Enter Account as ${usr.name}">
+                                                            <i class="fas fa-sign-in-alt me-1"></i> Enter Account
+                                                        </a>
+
+                                                        <!-- Edit Info Modal Button -->
+                                                        <button type="button" class="btn btn-outline-light btn-sm rounded-pill px-3" data-bs-toggle="modal" data-bs-target="#editUserModal-${usr.id}">
+                                                            <i class="fas fa-edit me-1"></i> Edit Info
+                                                        </button>
+
+                                                        <c:choose>
+                                                            <c:when test="${usr.role == 'ADMIN'}">
+                                                                <button class="btn btn-outline-secondary btn-sm rounded-pill" disabled title="Cannot delete active admin"><i class="fas fa-lock"></i></button>
+                                                            </c:when>
+                                                            <c:otherwise>
+                                                                <form action="/admin/user/delete" method="post" onsubmit="return confirm('Delete this user account?');" class="d-inline-block mb-0">
+                                                                    <input type="hidden" name="id" value="${usr.id}">
+                                                                    <button type="submit" class="btn btn-outline-danger btn-sm rounded-pill"><i class="fas fa-trash"></i></button>
+                                                                </form>
+                                                            </c:otherwise>
+                                                        </c:choose>
+                                                    </div>
                                                 </td>
                                             </tr>
                                         </c:forEach>
@@ -451,6 +490,68 @@
                                 <button type="submit" class="btn btn-gold rounded-pill px-4">Upload Drawing</button>
                             </form>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </c:forEach>
+    </c:if>
+
+    <!-- Edit User Information Modals -->
+    <c:if test="${not empty allUsers}">
+        <c:forEach var="usr" items="${allUsers}">
+            <div class="modal fade" id="editUserModal-${usr.id}" tabindex="-1" aria-hidden="true" style="text-align: left;">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content text-white border border-secondary border-opacity-50 rounded-4">
+                        <div class="modal-header border-secondary border-opacity-25">
+                            <h5 class="modal-title fw-bold" style="color: var(--yellow);"><i class="fas fa-user-edit me-2"></i>Edit Account #${usr.id} - ${usr.name}</h5>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <form action="/admin/user/edit" method="post">
+                            <input type="hidden" name="id" value="${usr.id}">
+                            <div class="modal-body p-4">
+                                <div class="mb-3">
+                                    <label class="form-label text-white-50 small">Full Name</label>
+                                    <input type="text" name="name" class="form-control glass-input" value="${usr.name}" required>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6 mb-3">
+                                        <label class="form-label text-white-50 small">Email Address</label>
+                                        <input type="email" name="email" class="form-control glass-input" value="${usr.email}" required>
+                                    </div>
+                                    <div class="col-6 mb-3">
+                                        <label class="form-label text-white-50 small">Phone Number</label>
+                                        <input type="text" name="phone" class="form-control glass-input" value="${usr.phone}">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6 mb-3">
+                                        <label class="form-label text-white-50 small">Role / Access Level</label>
+                                        <select name="role" class="form-select glass-input text-dark">
+                                            <option value="WORKER" ${usr.role == 'WORKER' ? 'selected' : ''}>WORKER</option>
+                                            <option value="CONTRACTOR" ${usr.role == 'CONTRACTOR' ? 'selected' : ''}>CONTRACTOR</option>
+                                            <option value="EMPLOYEE" ${usr.role == 'EMPLOYEE' ? 'selected' : ''}>EMPLOYEE</option>
+                                            <option value="USER" ${usr.role == 'USER' ? 'selected' : ''}>CLIENT (USER)</option>
+                                            <option value="ADMIN" ${usr.role == 'ADMIN' ? 'selected' : ''}>ADMIN</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-6 mb-3">
+                                        <label class="form-label text-white-50 small">Account Status</label>
+                                        <select name="status" class="form-select glass-input text-dark">
+                                            <option value="ACTIVE" ${usr.status == 'ACTIVE' ? 'selected' : ''}>ACTIVE</option>
+                                            <option value="INACTIVE" ${usr.status == 'INACTIVE' ? 'selected' : ''}>INACTIVE</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label text-white-50 small">Reset Password <small class="text-white-50">(Leave blank to keep unchanged)</small></label>
+                                    <input type="password" name="password" class="form-control glass-input" placeholder="New Password...">
+                                </div>
+                            </div>
+                            <div class="modal-footer border-secondary border-opacity-25">
+                                <button type="button" class="btn btn-outline-secondary rounded-pill px-4" data-bs-dismiss="modal">Cancel</button>
+                                <button type="submit" class="btn btn-gold rounded-pill px-4"><i class="fas fa-save me-1"></i> Save Changes</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
