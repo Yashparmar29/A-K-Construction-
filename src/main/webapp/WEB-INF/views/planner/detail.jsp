@@ -174,6 +174,9 @@
                                         style="width: 100%; height: 100%; position: absolute; top:0; left:0; z-index: 5; visibility: hidden;">
                                         <div class="canvas-badge"><i class="fas fa-cube me-1"></i> Interactive 3D
                                             WebGL</div>
+                                        <div id="societyBadge" class="society-badge" style="display: none;">
+                                            <i class="fas fa-gem text-warning me-1"></i> Plot #101: Your Unique Custom House
+                                        </div>
                                         <div class="canvas-controls">
                                             <button type="button" class="control-btn" onclick="animateCamera('front')"
                                                 title="Front View">F</button>
@@ -183,6 +186,12 @@
                                                 title="Top View">T</button>
                                             <button type="button" class="control-btn" onclick="animateCamera('iso')"
                                                 title="Isometric View">ISO</button>
+                                            <button type="button" class="control-btn" onclick="animateCamera('society')"
+                                                title="Society Aerial Overview">SOC</button>
+                                            <button type="button" class="control-btn btn-pill" id="societyToggleBtn"
+                                                onclick="toggleSocietyView()" title="Toggle Housing Society / Neighborhood View">
+                                                <i class="fas fa-city me-1"></i> Society Mode
+                                            </button>
                                             <button type="button" class="control-btn" id="roofToggleBtn"
                                                 onclick="toggleRoof()" title="Toggle Roof"><i
                                                     class="fas fa-home"></i></button>
@@ -202,56 +211,53 @@
 
 
                             <div class="glass-card p-4">
-                                <h5 style="color: #fff; font-weight: 700;" class="mb-3"><i
-                                        class="fas fa-compass text-warning me-2"></i> Spatial & Structural
-                                    Recommendations</h5>
-
-                                <div class="p-3 bg-white bg-opacity-5 rounded-3 mb-4" style="line-height: 1.8;">
-                                    <p class="text-white-50 mb-0" style="white-space: pre-line;">
-                                        ${plan.recommendations}</p>
+                                <div class="d-flex align-items-center justify-content-between mb-4 flex-wrap gap-2">
+                                    <h5 style="color: #fff; font-weight: 700; margin: 0;">
+                                        <i class="fas fa-compass text-warning me-2"></i> Spatial & Structural Recommendations
+                                    </h5>
+                                    <span class="badge bg-warning bg-opacity-20 text-warning px-3 py-2 rounded-pill fw-bold" style="font-size: 0.78rem;">
+                                        <i class="fas fa-microchip me-1"></i> AI Architect Insights
+                                    </span>
                                 </div>
+
+                                <div id="recommendationsContainer" class="mb-4">
+                                    <!-- Populated and dynamically formatted via JS -->
+                                </div>
+
                                 <div class="row g-3">
                                     <div class="col-sm-6 col-md-3">
-                                        <div
-                                            class="p-3 bg-dark rounded-3 text-center border border-secondary border-opacity-10">
-                                            <span class="text-white-50 d-block mb-1" style="font-size: 0.8rem;">Plot
-                                                Area</span>
-                                            <strong class="text-white h5">
-                                                <fmt:formatNumber value="${property.plotArea}" maxFractionDigits="0" />
-                                                sqft
+                                        <div class="p-3 rounded-3 text-center border border-warning border-opacity-20 h-100" style="background: rgba(255,255,255,0.03);">
+                                            <i class="fas fa-ruler-combined text-warning mb-2 fa-lg d-block"></i>
+                                            <span class="text-white-50 d-block mb-1" style="font-size: 0.8rem;">Plot Area</span>
+                                            <strong class="text-white h5 mb-0">
+                                                <fmt:formatNumber value="${property.plotArea}" maxFractionDigits="0" /> sqft
                                             </strong>
                                         </div>
                                     </div>
                                     <div class="col-sm-6 col-md-3">
-                                        <div
-                                            class="p-3 bg-dark rounded-3 text-center border border-secondary border-opacity-10">
-                                            <span class="text-white-50 d-block mb-1"
-                                                style="font-size: 0.8rem;">Buildable</span>
-                                            <strong class="text-white h5">
-                                                <fmt:formatNumber value="${plan.buildableArea}" maxFractionDigits="0" />
-                                                sqft
+                                        <div class="p-3 rounded-3 text-center border border-info border-opacity-20 h-100" style="background: rgba(255,255,255,0.03);">
+                                            <i class="fas fa-building text-info mb-2 fa-lg d-block"></i>
+                                            <span class="text-white-50 d-block mb-1" style="font-size: 0.8rem;">Buildable Area</span>
+                                            <strong class="text-white h5 mb-0">
+                                                <fmt:formatNumber value="${plan.buildableArea}" maxFractionDigits="0" /> sqft
                                             </strong>
                                         </div>
                                     </div>
                                     <div class="col-sm-6 col-md-3">
-                                        <div
-                                            class="p-3 bg-dark rounded-3 text-center border border-secondary border-opacity-10">
-                                            <span class="text-white-50 d-block mb-1" style="font-size: 0.8rem;">Open
-                                                Space</span>
-                                            <strong class="text-white h5">
-                                                <fmt:formatNumber value="${plan.openArea}" maxFractionDigits="0" />
-                                                sqft
+                                        <div class="p-3 rounded-3 text-center border border-success border-opacity-20 h-100" style="background: rgba(255,255,255,0.03);">
+                                            <i class="fas fa-vector-square text-success mb-2 fa-lg d-block"></i>
+                                            <span class="text-white-50 d-block mb-1" style="font-size: 0.8rem;">Open Space</span>
+                                            <strong class="text-white h5 mb-0">
+                                                <fmt:formatNumber value="${plan.openArea}" maxFractionDigits="0" /> sqft
                                             </strong>
                                         </div>
                                     </div>
                                     <div class="col-sm-6 col-md-3">
-                                        <div
-                                            class="p-3 bg-dark rounded-3 text-center border border-secondary border-opacity-10">
-                                            <span class="text-white-50 d-block mb-1"
-                                                style="font-size: 0.8rem;">Garden/Park</span>
-                                            <strong class="text-white h5">
-                                                <fmt:formatNumber value="${plan.gardenArea + plan.parkingArea}"
-                                                    maxFractionDigits="0" /> sqft
+                                        <div class="p-3 rounded-3 text-center border border-danger border-opacity-20 h-100" style="background: rgba(255,255,255,0.03);">
+                                            <i class="fas fa-tree text-danger mb-2 fa-lg d-block"></i>
+                                            <span class="text-white-50 d-block mb-1" style="font-size: 0.8rem;">Garden & Parking</span>
+                                            <strong class="text-white h5 mb-0">
+                                                <fmt:formatNumber value="${plan.gardenArea + plan.parkingArea}" maxFractionDigits="0" /> sqft
                                             </strong>
                                         </div>
                                     </div>
@@ -472,6 +478,142 @@
                     const plotWidth = parseFloat("${property.width}");
                     const plotLength = parseFloat("${property.length}");
                     const numFloors = parseInt("${property.floors}");
+
+                    document.addEventListener("DOMContentLoaded", function () {
+                        renderFormattedRecommendations();
+                    });
+
+                    function renderFormattedRecommendations() {
+                        const rawText = `${plan.recommendations}`;
+                        const container = document.getElementById("recommendationsContainer");
+                        if (!container || !rawText) return;
+
+                        const lines = rawText.split(/\r?\n/).map(l => l.trim()).filter(l => l.length > 0);
+                        let html = '';
+
+                        let overviewText = '';
+                        let currentSection = '';
+                        let vastuItems = [];
+                        let archItems = [];
+                        let floorItems = [];
+
+                        lines.forEach(line => {
+                            if (line.startsWith("Based on your property dimensions")) {
+                                overviewText = line;
+                            } else if (line.includes("Vastu Shastra Recommendations")) {
+                                currentSection = "vastu";
+                            } else if (line.includes("Standard Architectural Recommendations")) {
+                                currentSection = "arch";
+                            } else if (line.includes("Floor-wise Structural Allocations")) {
+                                currentSection = "floors";
+                            } else if (line.startsWith("- ")) {
+                                let itemText = line.substring(2).trim();
+                                itemText = itemText.replace(/\*\*(.*?)\*\*/g, '<strong class="text-white font-weight-bold">$1</strong>');
+                                if (currentSection === "vastu") vastuItems.push(itemText);
+                                else if (currentSection === "arch") archItems.push(itemText);
+                                else if (currentSection === "floors") floorItems.push(itemText);
+                            }
+                        });
+
+                        if (overviewText) {
+                            html += `
+                                <div class="p-3 mb-4 rounded-3" style="background: rgba(244, 196, 48, 0.08); border: 1px solid rgba(244, 196, 48, 0.3); border-left: 4px solid #F4C430;">
+                                    <div class="d-flex align-items-start gap-3">
+                                        <div class="p-2 rounded-circle bg-warning bg-opacity-20 text-warning mt-1">
+                                            <i class="fas fa-lightbulb fa-lg"></i>
+                                        </div>
+                                        <div>
+                                            <span class="text-white-50" style="font-size: 0.95rem; line-height: 1.7; display: block;">` + overviewText + `</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            `;
+                        }
+
+                        if (vastuItems.length > 0) {
+                            html += `
+                                <div class="mb-4">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <span class="badge bg-warning text-dark me-2 px-3 py-2 rounded-pill fw-bold" style="font-size: 0.8rem;">
+                                            <i class="fas fa-yin-yang me-1"></i> Vastu Compliant
+                                        </span>
+                                        <h6 class="text-warning font-weight-bold mb-0">Vastu Shastra Recommendations Applied</h6>
+                                    </div>
+                                    <div class="row g-2">
+                            `;
+                            vastuItems.forEach(item => {
+                                let iconClass = 'fa-check-circle text-warning';
+                                if (item.includes("Main Entrance")) iconClass = 'fa-door-open text-warning';
+                                else if (item.includes("Kitchen")) iconClass = 'fa-fire text-danger';
+                                else if (item.includes("Master Bedroom")) iconClass = 'fa-bed text-primary';
+                                else if (item.includes("Bathroom")) iconClass = 'fa-bath text-info';
+                                else if (item.includes("Water Tank")) iconClass = 'fa-faucet-drip text-info';
+
+                                html += `
+                                    <div class="col-md-6">
+                                        <div class="p-3 rounded-3 h-100 d-flex align-items-center gap-2" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); font-size: 0.88rem;">
+                                            <i class="fas ` + iconClass + ` me-2 fa-lg"></i>
+                                            <span class="text-white-50">` + item + `</span>
+                                        </div>
+                                    </div>
+                                `;
+                            });
+                            html += `</div></div>`;
+                        } else if (archItems.length > 0) {
+                            html += `
+                                <div class="mb-4">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <span class="badge bg-info text-dark me-2 px-3 py-2 rounded-pill fw-bold" style="font-size: 0.8rem;">
+                                            <i class="fas fa-drafting-compass me-1"></i> Architecture
+                                        </span>
+                                        <h6 class="text-info font-weight-bold mb-0">Standard Architectural Guidelines</h6>
+                                    </div>
+                                    <div class="row g-2">
+                            `;
+                            archItems.forEach(item => {
+                                html += `
+                                    <div class="col-md-6">
+                                        <div class="p-3 rounded-3 h-100 d-flex align-items-center gap-2" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); font-size: 0.88rem;">
+                                            <i class="fas fa-check-circle text-info me-2 fa-lg"></i>
+                                            <span class="text-white-50">` + item + `</span>
+                                        </div>
+                                    </div>
+                                `;
+                            });
+                            html += `</div></div>`;
+                        }
+
+                        if (floorItems.length > 0) {
+                            html += `
+                                <div class="mb-2">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <span class="badge bg-secondary text-white me-2 px-3 py-2 rounded-pill fw-bold" style="font-size: 0.8rem;">
+                                            <i class="fas fa-layer-group me-1"></i> Zoning
+                                        </span>
+                                        <h6 class="text-white font-weight-bold mb-0">Floor-wise Structural Allocations</h6>
+                                    </div>
+                                    <div class="d-flex flex-column gap-2">
+                            `;
+                            floorItems.forEach(item => {
+                                let floorIcon = 'fa-building text-warning';
+                                if (item.includes("Ground Floor")) floorIcon = 'fa-house-user text-warning';
+                                else if (item.includes("First Floor")) floorIcon = 'fa-bed text-info';
+                                else if (item.includes("Second Floor")) floorIcon = 'fa-umbrella-beach text-success';
+
+                                html += `
+                                    <div class="p-3 rounded-3" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); font-size: 0.88rem;">
+                                        <div class="d-flex align-items-start gap-3">
+                                            <i class="fas ` + floorIcon + ` mt-1 me-1 fa-lg"></i>
+                                            <span class="text-white-50" style="line-height: 1.6;">` + item + `</span>
+                                        </div>
+                                    </div>
+                                `;
+                            });
+                            html += `</div></div>`;
+                        }
+
+                        container.innerHTML = html;
+                    }
 
                     // Unified architectural layout calculation engine (contiguous grids, no overlaps)
                     function calculateLayout(W_plot, L_plot, floorsObj, dimensionsObj) {
@@ -1049,13 +1191,18 @@
                     let scene, camera, renderer, controls;
                     let roofGroup = new THREE.Group();
                     let houseGroup = new THREE.Group();
+                    let societyGroup = new THREE.Group();
                     let showRoof = true;
+                    let showSocietyView = false;
                     let walkthrough = false;
                     let moveForward = false, moveBackward = false, moveLeft = false, moveRight = false;
                     let walkSpeed = 0.5;
 
                     let ambientLight, sunLight;
                     let roomLights = [];
+                    let streetLights = [];
+                    let plotMarkerPin = null;
+                    let spotlightPlot101 = null;
                     let isNightMode = false;
 
                     init3D();
@@ -1108,6 +1255,7 @@
                         scene.add(grid);
 
                         buildHouse();
+                        buildSocietyView();
                         window.addEventListener('resize', onWindowResize);
                         animate();
                     }
@@ -1508,6 +1656,230 @@
                         houseGroup.add(stepsGroup);
                     }
 
+                    // ==========================================
+                    // 3D Residential Housing Society & Neighborhood System
+                    // ==========================================
+                    function buildSocietyView() {
+                        while (societyGroup.children.length > 0) {
+                            societyGroup.remove(societyGroup.children[0]);
+                        }
+                        streetLights = [];
+
+                        // Society Ground (Grass Estate)
+                        const societyGroundGeo = new THREE.PlaneGeometry(320, 320);
+                        const societyGroundMat = new THREE.MeshStandardMaterial({ color: 0x1b3b22, roughness: 0.9 });
+                        const societyGround = new THREE.Mesh(societyGroundGeo, societyGroundMat);
+                        societyGround.rotation.x = -Math.PI / 2;
+                        societyGround.position.y = -0.05;
+                        societyGround.receiveShadow = true;
+                        societyGroup.add(societyGround);
+
+                        // Main Avenue Asphalt Road
+                        const mainRoadGeo = new THREE.PlaneGeometry(320, 24);
+                        const roadMat = new THREE.MeshStandardMaterial({ color: 0x242834, roughness: 0.7 });
+                        const mainRoad = new THREE.Mesh(mainRoadGeo, roadMat);
+                        mainRoad.rotation.x = -Math.PI / 2;
+                        mainRoad.position.set(0, 0.01, -30);
+                        mainRoad.receiveShadow = true;
+                        societyGroup.add(mainRoad);
+
+                        // Yellow Dashed Lane Markings
+                        const dashMat = new THREE.MeshBasicMaterial({ color: 0xf1c40f });
+                        for (let x = -150; x <= 150; x += 12) {
+                            const dashGeo = new THREE.PlaneGeometry(6, 0.6);
+                            const dash = new THREE.Mesh(dashGeo, dashMat);
+                            dash.rotation.x = -Math.PI / 2;
+                            dash.position.set(x, 0.02, -30);
+                            societyGroup.add(dash);
+                        }
+
+                        // Cross Roads
+                        const crossRoadGeo = new THREE.PlaneGeometry(20, 160);
+                        const crossRoad1 = new THREE.Mesh(crossRoadGeo, roadMat);
+                        crossRoad1.rotation.x = -Math.PI / 2;
+                        crossRoad1.position.set(-60, 0.01, 40);
+                        crossRoad1.receiveShadow = true;
+                        societyGroup.add(crossRoad1);
+
+                        const crossRoad2 = new THREE.Mesh(crossRoadGeo, roadMat);
+                        crossRoad2.rotation.x = -Math.PI / 2;
+                        crossRoad2.position.set(60, 0.01, 40);
+                        crossRoad2.receiveShadow = true;
+                        societyGroup.add(crossRoad2);
+
+                        // Sidewalk Curbs
+                        const curbMat = new THREE.MeshStandardMaterial({ color: 0x7f8c8d, roughness: 0.5 });
+                        const curbGeo = new THREE.BoxGeometry(320, 0.3, 1.5);
+                        const curbNorth = new THREE.Mesh(curbGeo, curbMat); curbNorth.position.set(0, 0.15, -42.75); societyGroup.add(curbNorth);
+                        const curbSouth = new THREE.Mesh(curbGeo, curbMat); curbSouth.position.set(0, 0.15, -17.25); societyGroup.add(curbSouth);
+
+                        // Perimeter Boundary Wall
+                        const wallMat = new THREE.MeshStandardMaterial({ color: 0x34495e, roughness: 0.8 });
+                        const pw1 = new THREE.Mesh(new THREE.BoxGeometry(320, 4, 1), wallMat); pw1.position.set(0, 2, -150); societyGroup.add(pw1);
+                        const pw2 = new THREE.Mesh(new THREE.BoxGeometry(320, 4, 1), wallMat); pw2.position.set(0, 2, 150); societyGroup.add(pw2);
+                        const pw3 = new THREE.Mesh(new THREE.BoxGeometry(1, 4, 300), wallMat); pw3.position.set(-150, 2, 0); societyGroup.add(pw3);
+                        const pw4 = new THREE.Mesh(new THREE.BoxGeometry(1, 4, 300), wallMat); pw4.position.set(150, 2, 0); societyGroup.add(pw4);
+
+                        // Entrance Arch & Security Booth
+                        const archMat = new THREE.MeshStandardMaterial({ color: 0x1e272e, roughness: 0.4 });
+                        const p1 = new THREE.Mesh(new THREE.BoxGeometry(3, 12, 3), archMat); p1.position.set(-15, 6, -145); societyGroup.add(p1);
+                        const p2 = new THREE.Mesh(new THREE.BoxGeometry(3, 12, 3), archMat); p2.position.set(15, 6, -145); societyGroup.add(p2);
+                        const beam = new THREE.Mesh(new THREE.BoxGeometry(33, 2, 3), archMat); beam.position.set(0, 11, -145); societyGroup.add(beam);
+
+                        const booth = new THREE.Mesh(new THREE.BoxGeometry(5, 5, 5), new THREE.MeshStandardMaterial({ color: 0x2c3e50, roughness: 0.5 }));
+                        booth.position.set(-20, 2.5, -140); societyGroup.add(booth);
+
+                        // Streetlights
+                        const poleGeo = new THREE.CylinderGeometry(0.15, 0.2, 7);
+                        const poleMat = new THREE.MeshStandardMaterial({ color: 0x111111, metalness: 0.8, roughness: 0.2 });
+                        const fixtureMat = new THREE.MeshBasicMaterial({ color: 0xffe082 });
+
+                        const lightPositions = [
+                            [-120, -18], [-80, -18], [-40, -18], [0, -18], [40, -18], [80, -18], [120, -18],
+                            [-120, -42], [-80, -42], [-40, -42], [0, -42], [40, -42], [80, -42], [120, -42],
+                            [-52, 10], [-52, 50], [-52, 90], [52, 10], [52, 50], [52, 90]
+                        ];
+
+                        lightPositions.forEach(pos => {
+                            const poleGroup = new THREE.Group();
+                            const pole = new THREE.Mesh(poleGeo, poleMat); pole.position.y = 3.5; poleGroup.add(pole);
+                            const fixture = new THREE.Mesh(new THREE.SphereGeometry(0.4, 8, 8), fixtureMat); fixture.position.set(0, 7, 0); poleGroup.add(fixture);
+
+                            const sLight = new THREE.PointLight(0xffaa44, 0, 25);
+                            sLight.position.set(0, 6.8, 0);
+                            poleGroup.add(sLight);
+                            streetLights.push({ light: sLight, fixture: fixture });
+
+                            poleGroup.position.set(pos[0], 0, pos[1]);
+                            societyGroup.add(poleGroup);
+                        });
+
+                        // Central Community Park & Pool
+                        const parkGeo = new THREE.PlaneGeometry(90, 70);
+                        const parkMat = new THREE.MeshStandardMaterial({ color: 0x2ecc71, roughness: 0.8 });
+                        const park = new THREE.Mesh(parkGeo, parkMat); park.rotation.x = -Math.PI / 2; park.position.set(0, 0.02, 40); park.receiveShadow = true;
+                        societyGroup.add(park);
+
+                        const poolRing = new THREE.Mesh(new THREE.CylinderGeometry(8, 8, 0.6, 24), new THREE.MeshStandardMaterial({ color: 0xbdc3c7, roughness: 0.3 }));
+                        poolRing.position.set(0, 0.3, 40); societyGroup.add(poolRing);
+                        const poolWater = new THREE.Mesh(new THREE.CylinderGeometry(7.5, 7.5, 0.5, 24), new THREE.MeshStandardMaterial({ color: 0x00a8ff, roughness: 0.1, transparent: true, opacity: 0.85 }));
+                        poolWater.position.set(0, 0.35, 40); societyGroup.add(poolWater);
+
+                        // Trees
+                        const trees = [[-30, 20], [-25, 55], [30, 20], [25, 55], [-120, -10], [-90, -10], [90, -10], [120, -10], [-110, 30], [-110, 80], [110, 30], [110, 80], [-10, 110], [10, 110]];
+                        trees.forEach(tc => build3DTree(tc[0], tc[1]));
+
+                        // Clubhouse
+                        buildClubhouseBuilding(-95, 30);
+
+                        // Neighboring Villas (Plots 102 - 108)
+                        buildNeighboringVilla({ plotNum: "102", x: 45, z: 0, width: 28, length: 32, floors: 2, wallColor: 0xecf0f1, roofColor: 0x2c3e50, style: "modern_flat" });
+                        buildNeighboringVilla({ plotNum: "103", x: 45, z: 85, width: 26, length: 30, floors: 2, wallColor: 0xf39c12, roofColor: 0x96281b, style: "pitch_roof" });
+                        buildNeighboringVilla({ plotNum: "104", x: 0, z: 95, width: 32, length: 28, floors: 3, wallColor: 0xe0e0e0, roofColor: 0x1e272e, style: "modern_flat" });
+                        buildNeighboringVilla({ plotNum: "105", x: -45, z: 85, width: 26, length: 28, floors: 2, wallColor: 0xd2dae2, roofColor: 0x485460, style: "modern_flat" });
+                        buildNeighboringVilla({ plotNum: "106", x: -95, z: 85, width: 28, length: 30, floors: 1, wallColor: 0xf5cd79, roofColor: 0xb71540, style: "pitch_roof" });
+                        buildNeighboringVilla({ plotNum: "107", x: 95, z: 0, width: 30, length: 32, floors: 2, wallColor: 0x78e08f, roofColor: 0x1e3799, style: "modern_flat" });
+                        buildNeighboringVilla({ plotNum: "108", x: -95, z: -70, width: 34, length: 32, floors: 2, wallColor: 0xffd32a, roofColor: 0x3c40c6, style: "modern_flat" });
+
+                        // Featured Plot 101 Frame Highlight (User's House)
+                        const frameGeo = new THREE.BoxGeometry(W_house * 0.5 + 4, 0.1, L_house * 0.5 + 4);
+                        const frameMat = new THREE.MeshStandardMaterial({ color: 0xF4C430, roughness: 0.3, metalness: 0.7, emissive: 0x664d00 });
+                        const frameMesh = new THREE.Mesh(frameGeo, frameMat); frameMesh.position.set(0, 0.05, 0); societyGroup.add(frameMesh);
+
+                        // Floating Marker Pin for Plot 101
+                        const pinGroup = new THREE.Group();
+                        const pinMat = new THREE.MeshStandardMaterial({ color: 0xF4C430, metalness: 0.9, roughness: 0.1, emissive: 0xb38600 });
+                        const pinHead = new THREE.Mesh(new THREE.SphereGeometry(1.2, 16, 16), pinMat); pinHead.position.y = 2.5; pinGroup.add(pinHead);
+                        const pinCone = new THREE.Mesh(new THREE.ConeGeometry(1.0, 2.5, 16), pinMat); pinCone.rotation.x = Math.PI; pinCone.position.y = 0.8; pinGroup.add(pinCone);
+                        pinGroup.position.set(0, (numFloors * 4 + 4) * 0.5 + 2, 0); societyGroup.add(pinGroup); plotMarkerPin = pinGroup;
+
+                        // Spotlight for Plot 101
+                        spotlightPlot101 = new THREE.SpotLight(0xffdf80, 0);
+                        spotlightPlot101.position.set(0, 45, 0);
+                        spotlightPlot101.target = houseGroup;
+                        spotlightPlot101.angle = Math.PI / 4;
+                        spotlightPlot101.penumbra = 0.5;
+                        societyGroup.add(spotlightPlot101);
+
+                        scene.add(societyGroup);
+                        societyGroup.visible = showSocietyView;
+                    }
+
+                    function build3DTree(x, z) {
+                        const treeGroup = new THREE.Group();
+                        const trunk = new THREE.Mesh(new THREE.CylinderGeometry(0.4, 0.6, 4, 8), new THREE.MeshStandardMaterial({ color: 0x5c4033, roughness: 0.9 })); trunk.position.y = 2; treeGroup.add(trunk);
+                        const foliageMat = new THREE.MeshStandardMaterial({ color: 0x27ae60, roughness: 0.8 });
+                        const f1 = new THREE.Mesh(new THREE.ConeGeometry(3, 6, 8), foliageMat); f1.position.y = 5.5; treeGroup.add(f1);
+                        const f2 = f1.clone(); f2.scale.set(0.75, 0.75, 0.75); f2.position.y = 7.5; treeGroup.add(f2);
+                        treeGroup.position.set(x, 0, z); societyGroup.add(treeGroup);
+                    }
+
+                    function buildClubhouseBuilding(x, z) {
+                        const clubGroup = new THREE.Group();
+                        const body = new THREE.Mesh(new THREE.BoxGeometry(30, 8, 20), new THREE.MeshStandardMaterial({ color: 0x2c3e50, roughness: 0.5 })); body.position.y = 4; clubGroup.add(body);
+                        const glass = new THREE.Mesh(new THREE.BoxGeometry(24, 6, 0.5), new THREE.MeshStandardMaterial({ color: 0x74b9ff, transparent: true, opacity: 0.6 })); glass.position.set(0, 4, -10.1); clubGroup.add(glass);
+                        const roof = new THREE.Mesh(new THREE.BoxGeometry(32, 0.8, 22), new THREE.MeshStandardMaterial({ color: 0xd63031, roughness: 0.4 })); roof.position.y = 8.4; clubGroup.add(roof);
+                        const pool = new THREE.Mesh(new THREE.BoxGeometry(16, 0.4, 10), new THREE.MeshStandardMaterial({ color: 0x0984e3, roughness: 0.1 })); pool.position.set(0, 0.2, 16); clubGroup.add(pool);
+                        clubGroup.position.set(x, 0, z); societyGroup.add(clubGroup);
+                    }
+
+                    function buildNeighboringVilla(cfg) {
+                        const villaGroup = new THREE.Group();
+                        const wallMat = new THREE.MeshStandardMaterial({ color: cfg.wallColor, roughness: 0.7 });
+                        const roofMat = new THREE.MeshStandardMaterial({ color: cfg.roofColor, roughness: 0.5 });
+                        const windowMat = new THREE.MeshStandardMaterial({ color: 0x81ecec, transparent: true, opacity: 0.6 });
+
+                        const plotBase = new THREE.Mesh(new THREE.BoxGeometry(cfg.width + 4, 0.1, cfg.length + 4), new THREE.MeshStandardMaterial({ color: 0x27ae60, roughness: 0.9 })); plotBase.position.y = 0.05; villaGroup.add(plotBase);
+                        const hHeight = cfg.floors * 4.0;
+                        const body = new THREE.Mesh(new THREE.BoxGeometry(cfg.width, hHeight, cfg.length), wallMat); body.position.y = hHeight / 2 + 0.1; body.castShadow = true; body.receiveShadow = true; villaGroup.add(body);
+
+                        const winGeo = new THREE.BoxGeometry(4, 2.5, 0.2);
+                        for (let f = 0; f < cfg.floors; f++) {
+                            const winY = f * 4.0 + 2.5;
+                            const w1 = new THREE.Mesh(winGeo, windowMat); w1.position.set(-cfg.width / 4, winY, -cfg.length / 2 - 0.1); villaGroup.add(w1);
+                            const w2 = new THREE.Mesh(winGeo, windowMat); w2.position.set(cfg.width / 4, winY, -cfg.length / 2 - 0.1); villaGroup.add(w2);
+                        }
+
+                        const door = new THREE.Mesh(new THREE.BoxGeometry(2.5, 3.2, 0.2), new THREE.MeshStandardMaterial({ color: 0x4b4b4b, roughness: 0.8 })); door.position.set(0, 1.6, -cfg.length / 2 - 0.15); villaGroup.add(door);
+
+                        if (cfg.style === "pitch_roof") {
+                            const roof = new THREE.Mesh(new THREE.ConeGeometry(cfg.width * 0.7, 4, 4), roofMat); roof.rotation.y = Math.PI / 4; roof.position.y = hHeight + 2.1; villaGroup.add(roof);
+                        } else {
+                            const roof = new THREE.Mesh(new THREE.BoxGeometry(cfg.width + 1.5, 0.6, cfg.length + 1.5), roofMat); roof.position.y = hHeight + 0.4; villaGroup.add(roof);
+                        }
+
+                        buildCar3D(cfg.width / 2 + 1, 0, -cfg.length / 2 + 3, 5, 8);
+
+                        // Plot Label Badge Canvas
+                        const canvas = document.createElement('canvas'); canvas.width = 128; canvas.height = 64;
+                        const ctx = canvas.getContext('2d'); ctx.fillStyle = '#1e272e'; ctx.fillRect(0, 0, 128, 64);
+                        ctx.fillStyle = '#f5cd79'; ctx.font = 'bold 24px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('PLOT ' + cfg.plotNum, 64, 40);
+                        const labelMesh = new THREE.Mesh(new THREE.PlaneGeometry(6, 3), new THREE.MeshBasicMaterial({ map: new THREE.CanvasTexture(canvas), side: THREE.DoubleSide }));
+                        labelMesh.position.set(0, hHeight + 5, 0); villaGroup.add(labelMesh);
+
+                        villaGroup.position.set(cfg.x, 0, cfg.z); societyGroup.add(villaGroup);
+                    }
+
+                    function toggleSocietyView() {
+                        showSocietyView = !showSocietyView;
+                        societyGroup.visible = showSocietyView;
+
+                        const btn = document.getElementById("societyToggleBtn");
+                        const badge = document.getElementById("societyBadge");
+
+                        if (showSocietyView) {
+                            btn.style.background = "var(--yellow)";
+                            btn.style.color = "#121212";
+                            badge.style.display = "flex";
+                            animateCamera('society');
+                        } else {
+                            btn.style.background = "rgba(0,0,0,0.7)";
+                            btn.style.color = "#fff";
+                            badge.style.display = "none";
+                            animateCamera('iso');
+                        }
+                    }
+
                     // Camera Animation tweening
                     function animateCamera(direction) {
                         if (walkthrough) toggleWalkthrough();
@@ -1517,6 +1889,7 @@
                         else if (direction === 'side') { targetX = 22; targetY = 5; targetZ = 0; }
                         else if (direction === 'top') { targetX = 0; targetY = 28; targetZ = 0.01; }
                         else if (direction === 'iso') { targetX = 18; targetY = 12; targetZ = 22; }
+                        else if (direction === 'society') { targetX = 85; targetY = 55; targetZ = 90; }
 
                         let step = 0; const steps = 30;
                         const startX = camera.position.x; const startY = camera.position.y; const startZ = camera.position.z;
@@ -1618,6 +1991,11 @@
                             sunLight.color.setHex(0x334488);
                             ambientLight.intensity = 0.15;
 
+                            if (streetLights) {
+                                streetLights.forEach(sl => { sl.light.intensity = 1.2; });
+                            }
+                            if (spotlightPlot101) spotlightPlot101.intensity = 1.8;
+
                             roomLights.forEach(l => scene.remove(l));
                             roomLights = [];
 
@@ -1649,6 +2027,11 @@
                             sunLight.intensity = 0.8;
                             sunLight.color.setHex(0xfffaed);
                             ambientLight.intensity = 0.6;
+
+                            if (streetLights) {
+                                streetLights.forEach(sl => { sl.light.intensity = 0; });
+                            }
+                            if (spotlightPlot101) spotlightPlot101.intensity = 0;
 
                             roomLights.forEach(l => scene.remove(l));
                             roomLights = [];
@@ -1751,6 +2134,9 @@
 
                     function animate() {
                         requestAnimationFrame(animate);
+                        if (plotMarkerPin && showSocietyView) {
+                            plotMarkerPin.position.y = (numFloors * 4 + 4) * 0.5 + 2 + Math.sin(Date.now() * 0.003) * 0.5;
+                        }
                         if (walkthrough) {
                             handleWalkthroughMovement();
                         } else {
