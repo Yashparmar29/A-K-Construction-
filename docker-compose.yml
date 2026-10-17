@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  db:
+    image: mysql:8.0
+    container_name: ak_construction_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: ak_construction
+      MYSQL_USER: ak_user
+      MYSQL_PASSWORD: ak_password
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./database/ak_construction.sql:/docker-entrypoint-initdb.d/01_ak_construction.sql:ro
+      - ./database/planner_schema.sql:/docker-entrypoint-initdb.d/02_planner_schema.sql:ro
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-prootpassword"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ak_construction_app
+    restart: always
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/ak_construction?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+      SPRING_DATASOURCE_USERNAME: ak_user
+      SPRING_DATASOURCE_PASSWORD: ak_password
+      PORT: 8080
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  mysql_data:

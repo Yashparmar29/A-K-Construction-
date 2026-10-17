@@ -1,0 +1,23 @@
+target/
+*.jar
+*.war
+*.zip
+!docs/**/*.png
+!docs/**/*.jpg
+*.class
+
+# Log files
+*.log
+
+# Mobile / IDE
+.idea/
+.vscode/
+*.iml
+.classpath
+.project
+.settings/
+
+# OS / Temp
+Thumbs.db
+.DS_Store
+deploy_bundle_temp/

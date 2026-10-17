@@ -1,0 +1,21 @@
+[Unit]
+Description=A K Construction Spring Boot Application
+After=network.target
+
+[Service]
+Type=simple
+User=ec2-user
+WorkingDirectory=/opt/ak-construction
+ExecStart=/usr/bin/java -Xms256m -Xmx512m -jar /opt/ak-construction/ak-construction-1.0.0.jar --server.port=8080
+SuccessExitStatus=143
+Restart=always
+RestartSec=10
+
+# Environment variables for AWS RDS MySQL connection
+Environment="SPRING_DATASOURCE_URL=jdbc:mysql://YOUR_RDS_ENDPOINT:3306/ak_construction?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true"
+Environment="SPRING_DATASOURCE_USERNAME=admin"
+Environment="SPRING_DATASOURCE_PASSWORD=YOUR_DB_PASSWORD"
+Environment="PORT=8080"
+
+[Install]
+WantedBy=multi-user.target
