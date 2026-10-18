@@ -17,10 +17,10 @@ FROM eclipse-temurin:8-jre
 
 WORKDIR /app
 
-# Copy the built jar/war
-COPY --from=build /app/target/*.*ar app.jar
+# Copy the built war
+COPY --from=build /app/target/app.war app.war
 
 ENV PORT=8080
 EXPOSE 8080
 
-CMD ["sh", "-c", "java -Dserver.port=${PORT:-8080} -Djava.security.egd=file:/dev/./urandom -jar app.jar"]
+CMD ["sh", "-c", "java -Dserver.port=${PORT:-8080} -Djava.security.egd=file:/dev/./urandom -jar app.war"]

@@ -8,7 +8,7 @@
     <groupId>com.akconstruction</groupId>
     <artifactId>ak-construction</artifactId>
     <version>1.0.0</version>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
 
     <name>A K Construction</name>
     <description>A K Construction - Professional Construction Company Website</description>
@@ -75,7 +75,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-tomcat</artifactId>
-            <!-- <scope>provided</scope> -->
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 
