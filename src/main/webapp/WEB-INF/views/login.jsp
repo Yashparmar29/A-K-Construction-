@@ -79,13 +79,13 @@
                         <button type="button" class="btn role-badge-btn flex-fill py-2 px-1 rounded-3 small" onclick="fillCredentials('user@akconstruction.com', 'user123', this)">
                             <i class="fas fa-user-tie d-block mb-1"></i> Client
                         </button>
-                        <button type="button" class="btn role-badge-btn flex-fill py-2 px-1 rounded-3 small">
+                        <button type="button">
                             <i class="fas fa-user-ninja d-block mb-1"></i> Contractor
                         </button>
-                        <button type="button" class="btn role-badge-btn flex-fill py-2 px-1 rounded-3 small">
+                        <button type="button">
                             <i class="fas fa-tools d-block mb-1"></i> Worker
                         </button>
-                        <button type="button" class="btn role-badge-btn flex-fill py-2 px-1 rounded-3 small">
+                        <button type="button">
                             <i class="fas fa-user-shield d-block mb-1"></i> Admin
                         </button>
                     </div>
